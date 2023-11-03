@@ -12,6 +12,7 @@ public class Player extends Actor
      * Act - do whatever the Player wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
+    private int fire_delay = 100;
     public void act()
     {
         movement();
@@ -24,7 +25,6 @@ public class Player extends Actor
         {
             if (Greenfoot.mouseClicked(null))
             {
-                
                 double adjacent = (mouse.getX() - getX());
                 double opposite = (mouse.getY() - getY());
                 

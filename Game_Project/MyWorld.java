@@ -10,6 +10,7 @@ public class MyWorld extends World
 {
     private static int WW = 500;
     private static int WH = 500;
+    private static boolean spawn_cap = false;
     /**
      * Constructor for objects of class MyWorld.
      * 
@@ -26,6 +27,8 @@ public class MyWorld extends World
     private void prepare()
     {
         Player player = new Player();
-        addObject(player,(WW/2),(WH/2));
+        addObject(player,(WW/2-100),(WH/2));
+        Ennemy ennemy = new Ennemy();
+        addObject(ennemy,(WW/2+100),(WH/2));
     }
 }
