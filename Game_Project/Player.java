@@ -12,7 +12,8 @@ public class Player extends Actor
      * Act - do whatever the Player wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    private int fire_delay = 100;
+    private int fire_delay = 0;
+    private boolean shooting;
     public void act()
     {
         movement();
@@ -23,7 +24,7 @@ public class Player extends Actor
         MouseInfo mouse = Greenfoot.getMouseInfo();
         if (mouse != null)
         {
-            if (Greenfoot.mouseClicked(null))
+            if (fire_delay <= 0 && (!(Greenfoot.mouseDragEnded(null)) || Greenfoot.mouseClicked(null)))
             {
                 double adjacent = (mouse.getX() - getX());
                 double opposite = (mouse.getY() - getY());
@@ -34,6 +35,11 @@ public class Player extends Actor
                 Actor puck = new Puck();
                 getWorld().addObject(puck, getX(), getY());
                 puck.setRotation((int)angleDegrees);
+                fire_delay = 100;
+            }
+            else
+            {
+                fire_delay -= 1;
             }
         }
     } 

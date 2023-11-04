@@ -8,16 +8,16 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class MyWorld extends World
 {
-    private static int WW = 500;
-    private static int WH = 500;
-    private static boolean spawn_cap = false;
+    private static int WW = 1000;
+    private static int WH = 800;
+    private static int spawn_delay = 10;
     /**
      * Constructor for objects of class MyWorld.
      * 
      */
     public MyWorld()
     {    
-        super(WW, WH, 1); 
+        super(WW, WH, 1);
         prepare();
     }
     /**
@@ -27,8 +27,19 @@ public class MyWorld extends World
     private void prepare()
     {
         Player player = new Player();
-        addObject(player,(WW/2-100),(WH/2));
+        addObject(player,(WW/2-200),(WH/2));
         Ennemy ennemy = new Ennemy();
-        addObject(ennemy,(WW/2+100),(WH/2));
+        addObject(ennemy,(WW/2+200),(WH/2));
+        if (spawn_delay <= 0)
+        {
+            Ennemy ennemy1 = new Ennemy();
+            addObject(ennemy1,(WW/2+200),(WH/2));
+            spawn_delay = 10;
+        }
+        else
+        {
+            spawn_delay -= 1;
+        }
+        
     }
 }
