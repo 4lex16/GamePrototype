@@ -10,10 +10,10 @@ public class LevelOne extends World
 {
     private static int WW = 1000;
     private static int WH = 800;
-    private int timer = 60;
-
-    
-    
+    private int timer = 0;
+    SimpleTimer tim = new SimpleTimer();
+    Counter timeCount =new Counter();
+    int start = 0;
     /**
      * Constructor for objects of class LevelOne.
      * 
@@ -23,8 +23,9 @@ public class LevelOne extends World
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(WW, WH, 1);
         //timer
-        
-        
+        addObject(timeCount,950 , 50); 
+        timeCount.setValue(60);
+        act();
         prepare();
         
     }
@@ -39,10 +40,21 @@ public class LevelOne extends World
  
     }
     
+    public void act(){  
+     if(tim.millisElapsed() > 1000){
+                timeCount.add(-1);
+                tim.mark();
+            
+            }
+    }
+        }
+        
+        
+        
+
 
    
     
-    
-    }   
+      
     
     
