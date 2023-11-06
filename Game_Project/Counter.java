@@ -124,4 +124,6 @@ public class Counter extends Actor
                         (image.getHeight()-text.getHeight())/2);
         setImage(image);
     }
+
+    
 }

@@ -3,15 +3,16 @@ public class Player extends Actor
 {
     private int fire_delay = 0;
     private boolean shooting;
+    SimpleTimer tim = new SimpleTimer();
     
     public void act()
     {
         movement();
         aim();
-        if(isLevelFinished()){
-            transitionTolevelTwo();
+        isLevelFinished();
+            
         
-        }
+        
     }
     public void aim()
     {
@@ -42,38 +43,40 @@ public class Player extends Actor
         if (Greenfoot.isKeyDown("w"))
         {
             setRotation(270);
-            move(1);
+            move(5);
         }
         if (Greenfoot.isKeyDown("s"))
         {
             setRotation(90);
-            move(1);
+            move(5);
         }
         if (Greenfoot.isKeyDown("a"))
         {
             setRotation(180);
-            move(1);
+            move(5);
         }
         if (Greenfoot.isKeyDown("d"))
         {
             setRotation(0);
-            move(1);
+            move(5);
         }
     }
 
-    public boolean isLevelFinished(){
+    public void isLevelFinished(){
         World world = getWorld();
-        if(world.getObjects(Ennemy.class).isEmpty()){
-            return true;
-        }else{
-            return false;        
-        
-        }
+        if(tim.millisElapsed() == -5000){
+        World levelOne = getWorld();
+        levelOne.stopped();
+        World levelTwo = new LevelTwo();
+        levelTwo.started();
+        Greenfoot.setWorld (new LevelTwo());
+            
         
     
     }
-    
-    public void transitionTolevelTwo(){
+}
+   
+public void transitionTolevelTwo(){
         World levelOne = getWorld();
         levelOne.stopped();
         World levelTwo = new LevelTwo();
@@ -82,8 +85,8 @@ public class Player extends Actor
     
     }
     
-}
 
+}
 
 
 
