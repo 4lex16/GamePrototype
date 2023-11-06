@@ -20,7 +20,7 @@ public class Ennemy extends Actor
     {
         if (isTouching(Puck.class))
         {
-           getWorld().removeObject(this); 
+           getWorld().removeObject(this);
         }
     }
 }
