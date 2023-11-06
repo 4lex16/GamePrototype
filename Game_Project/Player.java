@@ -1,17 +1,6 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-
-/**
- * Write a description of class Player here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
 public class Player extends Actor
 {
-    /**
-     * Act - do whatever the Player wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
     private int fire_delay = 0;
     private boolean shooting;
     
@@ -29,7 +18,6 @@ public class Player extends Actor
         MouseInfo mouse = Greenfoot.getMouseInfo();
         if (mouse != null)
         {
-            //fire_delay <= 0 && (!(Greenfoot.mouseDragEnded(null)) || Greenfoot.mouseClicked(null))
             if (fire_delay <= 0 && (Greenfoot.mouseClicked(null) || Greenfoot.isKeyDown("space")))
             {
                 double adjacent = (mouse.getX() - getX());
@@ -72,9 +60,9 @@ public class Player extends Actor
             move(1);
         }
     }
-    
+
     public boolean isLevelFinished(){
-        var world = getWorld();
+        World world = getWorld();
         if(world.getObjects(Ennemy.class).isEmpty()){
             return true;
         }else{
@@ -86,9 +74,9 @@ public class Player extends Actor
     }
     
     public void transitionTolevelTwo(){
-        var levelOne = getWorld();
+        World levelOne = getWorld();
         levelOne.stopped();
-        var levelTwo = new LevelTwo();
+        World levelTwo = new LevelTwo();
         levelTwo.started();
         Greenfoot.setWorld(levelTwo);
     
