@@ -12,10 +12,10 @@ public class Puck extends Actor
      * Act - do whatever the Puck wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    private int duration = 300;
+    private int duration = 150;
     public void act()
     {
-        move(1);
+        move(2);
         duration -= 1;
         if (duration < 0)
         {

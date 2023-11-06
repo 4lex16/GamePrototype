@@ -1,0 +1,30 @@
+import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+
+/**
+ * Write a description of class LevelTwo here.
+ * 
+ * @author (your name) 
+ * @version (a version number or a date)
+ */
+public class LevelTwo extends World
+{
+    private static int WW = 1000;
+    private static int WH = 800;
+    /**
+     * Constructor for objects of class LevelTwo.
+     * 
+     */
+    public LevelTwo()
+    {    
+        // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
+        super(WW, WH, 1);
+        prepare();
+    }
+    private void prepare()
+    {
+        Player player = new Player();
+        addObject(player,(WW/2),(WH/2-200));
+        Ennemy ennemy = new Ennemy();
+        addObject(ennemy,(WW/2),(WH/2+200));    
+    }
+}

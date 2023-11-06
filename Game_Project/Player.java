@@ -24,7 +24,8 @@ public class Player extends Actor
         MouseInfo mouse = Greenfoot.getMouseInfo();
         if (mouse != null)
         {
-            if (fire_delay <= 0 && (!(Greenfoot.mouseDragEnded(null)) || Greenfoot.mouseClicked(null)))
+            //fire_delay <= 0 && (!(Greenfoot.mouseDragEnded(null)) || Greenfoot.mouseClicked(null))
+            if (fire_delay <= 0 && (Greenfoot.mouseClicked(null) || Greenfoot.isKeyDown("space")))
             {
                 double adjacent = (mouse.getX() - getX());
                 double opposite = (mouse.getY() - getY());
@@ -48,22 +49,22 @@ public class Player extends Actor
         if (Greenfoot.isKeyDown("w"))
         {
             setRotation(270);
-            move(2);
+            move(1);
         }
         if (Greenfoot.isKeyDown("s"))
         {
             setRotation(90);
-            move(2);
+            move(1);
         }
         if (Greenfoot.isKeyDown("a"))
         {
             setRotation(180);
-            move(2);
+            move(1);
         }
         if (Greenfoot.isKeyDown("d"))
         {
             setRotation(0);
-            move(2);
+            move(1);
         }
     }
 }
