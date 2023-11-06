@@ -10,6 +10,9 @@ public class LevelTwo extends World
 {
     private static int WW = 1000;
     private static int WH = 800;
+    SimpleTimer tim = new SimpleTimer();
+    Counter timeCount =new Counter();
+    
     /**
      * Constructor for objects of class LevelTwo.
      * 
@@ -19,6 +22,9 @@ public class LevelTwo extends World
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(WW, WH, 1);
         prepare();
+        addObject(timeCount,950 , 50); 
+        timeCount.setValue(60);
+        act();
     }
     private void prepare()
     {
@@ -26,5 +32,15 @@ public class LevelTwo extends World
         addObject(player,(WW/2),(WH/2-200));
         Ennemy ennemy = new Ennemy();
         addObject(ennemy,(WW/2),(WH/2+200));    
+    }
+    
+    public void act(){
+        if(tim.millisElapsed() > 1000){
+                timeCount.add(-1);
+                tim.mark();
+            
+            }
+    
+    
     }
 }
