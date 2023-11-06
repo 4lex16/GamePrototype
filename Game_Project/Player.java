@@ -14,10 +14,15 @@ public class Player extends Actor
      */
     private int fire_delay = 0;
     private boolean shooting;
+    
     public void act()
     {
         movement();
         aim();
+        if(isLevelFinished()){
+            transitionTolevelTwo();
+        
+        }
     }
     public void aim()
     {
@@ -67,4 +72,30 @@ public class Player extends Actor
             move(1);
         }
     }
+    
+    public boolean isLevelFinished(){
+        var world = getWorld();
+        if(world.getObjects(Ennemy.class).isEmpty()){
+            return true;
+        }else{
+            return false;        
+        
+        }
+        
+    
+    }
+    
+    public void transitionTolevelTwo(){
+        var levelOne = getWorld();
+        levelOne.stopped();
+        var levelTwo = new LevelTwo();
+        levelTwo.started();
+        Greenfoot.setWorld(levelTwo);
+    
+    }
+    
 }
+
+
+
+
