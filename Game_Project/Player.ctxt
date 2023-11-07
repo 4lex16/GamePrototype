@@ -6,6 +6,4 @@ comment2.params=
 comment2.target=void\ aim()
 comment3.params=
 comment3.target=void\ movement()
-comment4.params=
-comment4.target=void\ transitionTolevelTwo()
-numComments=5
+numComments=4

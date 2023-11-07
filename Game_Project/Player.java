@@ -60,17 +60,7 @@ public class Player extends Actor
             setRotation(0);
             move(5);
         }
- }
-   
- public void transitionTolevelTwo(){
-         World levelOne = getWorld();
-         levelOne.stopped();
-         World levelTwo = new LevelTwo();
-        levelTwo.started();
-        Greenfoot.setWorld(levelTwo);
-    
-    }
-    
+ } 
 
 }
 
