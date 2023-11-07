@@ -58,4 +58,5 @@ public class SimpleTimer
     {
         return (int) (System.currentTimeMillis() - lastMark);
     }
-}
+    
+ }
