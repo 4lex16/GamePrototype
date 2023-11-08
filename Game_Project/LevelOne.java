@@ -10,6 +10,7 @@ public class LevelOne extends World
 {
     private static int WW = 1000;
     private static int WH = 800;
+    private int spawn_duration = 0;
     private int timer = 61;
     //private int timer = 0;
     SimpleTimer tim = new SimpleTimer();
@@ -36,27 +37,38 @@ public class LevelOne extends World
     {
         Player player = new Player();
         addObject(player,(WW/2-200),(WH/2));
-        Ennemy ennemy = new Ennemy();
-        addObject(ennemy,(WW/2+200),(WH/2));    
+         
 
     }
-    
-    public void act(){  
-     if(tim.millisElapsed() > 1000){
-     timeCount.add(-1);
-     tim.mark();
-     timer--;
-     showText("Time left: "+ timer, 830,50);
-     if(timer <= 0)
-     {
-        
-        World levelOne = this;
-        levelOne.stopped();
-        World levelTwo = new LevelTwo();
-        levelTwo.started();
-        Greenfoot.setWorld (new LevelTwo());
+    public void spawn()
+    {
+        for(int i = 0; spawn_duration <= 0 && i<10 ;i++)
+        {
+            Ennemy ennemy = new Ennemy();
+            addObject(ennemy,Greenfoot.getRandomNumber(WW), Greenfoot.getRandomNumber(WH));
+            spawn_duration = 100;
         }
+        spawn_duration -= 1;
     }
+    
+    public void act()
+    {  
+        if(tim.millisElapsed() > 1000)
+        {
+            timeCount.add(-1);
+            tim.mark();
+            timer--;
+            showText("Time left: "+ timer, 830,50);
+            if(timer <= 0)
+            {
+                World levelOne = this;
+                levelOne.stopped();
+                World levelTwo = new LevelTwo();
+                levelTwo.started();
+                Greenfoot.setWorld (new LevelTwo());
+            }
+        }
+        spawn();
     }
 }    
         

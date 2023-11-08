@@ -34,17 +34,18 @@ public class LevelTwo extends World
         addObject(ennemy,(WW/2),(WH/2+200));    
     }
     
-    public void act(){
-    if(tim.millisElapsed() > 1000){
-                timeCount.add(-1);
-                tim.mark();
-                timer--;
-                showText("Time left: "+ timer, 830,50);
-        if(timer <= 0)
+    public void act()
+    {
+        if(tim.millisElapsed() > 1000)
+        {
+            timeCount.add(-1);
+            tim.mark();
+            timer--;
+            showText("Time left: "+ timer, 830,50);
+            if(timer <= 0)
             {
-         Greenfoot.stop();
-    
-        }    
-    }  
+                Greenfoot.stop();
+            }    
+        }  
     }
 }

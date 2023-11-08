@@ -10,10 +10,6 @@ public class Player extends Actor
     {
         movement();
         aim();
-        
-            
-        
-        
     }
     public void aim()
     {
@@ -43,11 +39,11 @@ public class Player extends Actor
     {
         if (Greenfoot.isKeyDown("shift"))
         {
-            movement_speed = 5;
+            movement_speed = 3;
         }
         else
         {
-            movement_speed = 3;
+            movement_speed = 2;
         }
         if (Greenfoot.isKeyDown("w"))
         {

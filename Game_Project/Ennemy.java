@@ -4,6 +4,7 @@ public class Ennemy extends Actor
 {
     private int playerX;
     private int playerY;
+    private int health = 2;
     
     
     public void act()
@@ -15,7 +16,12 @@ public class Ennemy extends Actor
     {
         if (isTouching(Puck.class))
         {
-           getWorld().removeObject(this);
+            health -= 1;
+            getWorld().removeObject(getOneIntersectingObject(Puck.class));
+            if (health == 0)
+            {
+                getWorld().removeObject(this);
+            }
         }
     }
     public void goTowardsPlayer()
