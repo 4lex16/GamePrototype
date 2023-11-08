@@ -27,7 +27,7 @@ public class Player extends Actor
                 Actor puck = new Puck();
                 getWorld().addObject(puck, getX(), getY());
                 puck.setRotation((int)angleDegrees);
-                fire_delay = 100;
+                fire_delay = 50;
             }
             else
             {

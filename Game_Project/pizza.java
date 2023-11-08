@@ -1,20 +1,20 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 
-public class Puck extends Actor
+public class pizza extends Actor
 {
-    private int duration = 100;
+    private int duration = 200;
     public void act()
     {
-        move(3);
-        puckDuration();
+        move(2);
+        delete();
     }
-    public void puckDuration()
+    public void delete()
     {
-        duration -= 1;
         if (duration < 0 || isAtEdge())
         {
             getWorld().removeObject(this);
         }
+        duration -= 1;
     }
 }
