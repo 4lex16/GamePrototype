@@ -3,10 +3,10 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 public class Puck extends Actor
 {
-    private int duration = 150;
+    private int duration = 100;
     public void act()
     {
-        move(2);
+        move(3);
         puckDuration();
     }
     public void puckDuration()

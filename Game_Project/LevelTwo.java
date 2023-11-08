@@ -10,6 +10,8 @@ public class LevelTwo extends World
 {
     private static int WW = 1000;
     private static int WH = 800;
+    private int spawn_duration = 250;
+    private int spawn_cap = 10;
     SimpleTimer tim = new SimpleTimer();
     Counter timeCount =new Counter();
     private int timer = 61;
@@ -29,11 +31,20 @@ public class LevelTwo extends World
     private void prepare()
     {
         Player player = new Player();
-        addObject(player,(WW/2),(WH/2-200));
-        Ennemy ennemy = new Ennemy();
-        addObject(ennemy,(WW/2),(WH/2+200));    
+        addObject(player,(WW/2),(WH/2-200)); 
     }
-    
+    public void spawn()
+    {
+        int spawn_num = this.getObjects(Ennemy.class).size();
+        while (spawn_num < spawn_cap && spawn_duration <= 0)
+        {
+            Ennemy ennemy = new Ennemy();
+            addObject(ennemy,Greenfoot.getRandomNumber(WW), Greenfoot.getRandomNumber(WH));
+            spawn_duration = 150;
+            spawn_num = this.getObjects(Ennemy.class).size();
+        }
+        spawn_duration -= 1;
+    }
     public void act()
     {
         if(tim.millisElapsed() > 1000)
@@ -46,6 +57,7 @@ public class LevelTwo extends World
             {
                 Greenfoot.stop();
             }    
-        }  
+        }
+        spawn();
     }
 }

@@ -10,7 +10,8 @@ public class LevelOne extends World
 {
     private static int WW = 1000;
     private static int WH = 800;
-    private int spawn_duration = 0;
+    private int spawn_duration = 1;
+    private int spawn_cap = 10;
     private int timer = 61;
     //private int timer = 0;
     SimpleTimer tim = new SimpleTimer();
@@ -37,16 +38,16 @@ public class LevelOne extends World
     {
         Player player = new Player();
         addObject(player,(WW/2-200),(WH/2));
-         
-
     }
     public void spawn()
     {
-        for(int i = 0; spawn_duration <= 0 && i<10 ;i++)
+        int spawn_num = this.getObjects(Ennemy.class).size();
+        while (spawn_num < spawn_cap && spawn_duration <= 0)
         {
             Ennemy ennemy = new Ennemy();
             addObject(ennemy,Greenfoot.getRandomNumber(WW), Greenfoot.getRandomNumber(WH));
-            spawn_duration = 100;
+            spawn_duration = 150;
+            spawn_num = this.getObjects(Ennemy.class).size();
         }
         spawn_duration -= 1;
     }
