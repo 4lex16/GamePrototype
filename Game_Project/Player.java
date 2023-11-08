@@ -3,6 +3,7 @@ public class Player extends Actor
 {
     private int fire_delay = 0;
     private boolean shooting;
+    private int movement_speed;
     
     
     public void act()
@@ -40,25 +41,33 @@ public class Player extends Actor
     } 
     public void movement()
     {
+        if (Greenfoot.isKeyDown("shift"))
+        {
+            movement_speed = 5;
+        }
+        else
+        {
+            movement_speed = 3;
+        }
         if (Greenfoot.isKeyDown("w"))
         {
             setRotation(270);
-            move(5);
+            move(movement_speed);
         }
         if (Greenfoot.isKeyDown("s"))
         {
             setRotation(90);
-            move(5);
+            move(movement_speed);
         }
         if (Greenfoot.isKeyDown("a"))
         {
             setRotation(180);
-            move(5);
+            move(movement_speed);
         }
         if (Greenfoot.isKeyDown("d"))
         {
             setRotation(0);
-            move(5);
+            move(movement_speed);
         }
  } 
 

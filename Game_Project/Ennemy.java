@@ -1,26 +1,28 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
-/**
- * Write a description of class Ennemy here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
 public class Ennemy extends Actor
 {
-    /**
-     * Act - do whatever the Ennemy wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
+    private int playerX;
+    private int playerY;
+    
+    
     public void act()
     {
+        goTowardsPlayer();
         die();
     }
     public void die()
     {
         if (isTouching(Puck.class))
         {
-           getWorld().removeObject(this); 
+           getWorld().removeObject(this);
         }
+    }
+    public void goTowardsPlayer()
+    {
+        playerX = getWorld().getObjects(Player.class).get(0).getX();
+        playerY = getWorld().getObjects(Player.class).get(0).getY();
+        turnTowards(playerX, playerY);
+        move(1);
     }
 }
