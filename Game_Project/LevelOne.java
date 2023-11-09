@@ -37,7 +37,7 @@ public class LevelOne extends World
     private void prepare()
     {
         Player player = new Player();
-        addObject(player,(WW/2-200),(WH/2));
+        addObject(player,(WW/2),(WH/2));
     }
     public void spawn()
     {
@@ -45,7 +45,23 @@ public class LevelOne extends World
         while (spawn_num < spawn_cap && spawn_duration <= 0)
         {
             Ennemy ennemy = new Ennemy();
-            addObject(ennemy,Greenfoot.getRandomNumber(WW), Greenfoot.getRandomNumber(WH));
+            int randomNum = Greenfoot.getRandomNumber(4);
+            if (randomNum == 0)
+            {
+                addObject(ennemy,Greenfoot.getRandomNumber(WW), 0);
+            }
+            if (randomNum == 1)
+            {
+                addObject(ennemy,0, Greenfoot.getRandomNumber(WH));
+            }
+            if (randomNum == 2)
+            {
+                addObject(ennemy,Greenfoot.getRandomNumber(WW), WH);
+            }
+            if (randomNum == 3)
+            {
+                addObject(ennemy,WW, Greenfoot.getRandomNumber(WH));
+            }
             spawn_duration = 150;
             spawn_num = this.getObjects(Ennemy.class).size();
         }
