@@ -13,7 +13,7 @@ public class LevelOne extends World
     private int spawn_duration = 1;
     private int spawn_cap = 10;
     private int timer = 61;
-    //private int timer = 0;
+    
     SimpleTimer tim = new SimpleTimer();
     Counter timeCount =new Counter();
     int end = 0;
@@ -39,6 +39,7 @@ public class LevelOne extends World
         Player player = new Player();
         addObject(player,(WW/2),(WH/2));
     }
+
     public void spawn()
     {
         int spawn_num = this.getObjects(Ennemy.class).size();
@@ -87,7 +88,10 @@ public class LevelOne extends World
         }
         spawn();
     }
-}    
+    
+}
+    
+   
         
         
         

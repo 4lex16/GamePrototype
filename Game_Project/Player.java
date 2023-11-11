@@ -6,12 +6,13 @@ public class Player extends Actor
     private int movement_speed;
     
     
-    public void act()
+ public void act()
     {
         movement();
         aim();
+        
     }
-    public void aim()
+ public void aim()
     {
         MouseInfo mouse = Greenfoot.getMouseInfo();
         if (mouse != null)
@@ -30,7 +31,7 @@ public class Player extends Actor
                 fire_delay = 50;
             }
             else
-            {
+         {
                 fire_delay -= 1;
             }
         }
@@ -66,8 +67,9 @@ public class Player extends Actor
             move(movement_speed);
         }
  } 
+ 
+ }
 
-}
 
 
 

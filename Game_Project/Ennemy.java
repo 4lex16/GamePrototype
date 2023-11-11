@@ -13,6 +13,7 @@ public class Ennemy extends Actor
         goTowardsPlayer();
         shoot();
         die();
+        
     }
     public void die()
     {
