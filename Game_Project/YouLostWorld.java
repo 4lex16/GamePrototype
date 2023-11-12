@@ -16,8 +16,8 @@ public class YouLostWorld extends World
     public YouLostWorld()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-        super(1000, 800, 1); 
-        showTextWithBigWhiteFont("You Lost", 270,400);
+        super(1600, 900, 1); 
+        showTextWithBigWhiteFont("You Lost", 550,450);
     }
 
     public void showTextWithBigWhiteFont(String message, int x, int y)
