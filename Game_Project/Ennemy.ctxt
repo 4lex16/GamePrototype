@@ -1,11 +1,13 @@
 #BlueJ class context
 comment0.target=Ennemy
-comment1.params=
-comment1.target=void\ act()
+comment1.params=movement_speed\ health\ set_fire_delay
+comment1.target=void\ setStats(int,\ int,\ int)
 comment2.params=
 comment2.target=void\ die()
 comment3.params=
 comment3.target=void\ goTowardsPlayer()
 comment4.params=
 comment4.target=void\ shoot()
-numComments=5
+comment5.params=
+comment5.target=void\ eliminatePlayer()
+numComments=6

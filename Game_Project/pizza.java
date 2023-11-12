@@ -8,10 +8,6 @@ public class pizza extends Actor
     {
         move(2);
         eliminatePlayer();
-        if (isGameLost())
-        {
-            transitionToYouLostWorld();
-        }
         delete();
     }
     public void delete()
@@ -22,39 +18,15 @@ public class pizza extends Actor
         }
         duration -= 1;
     }
-
-     public void eliminatePlayer()
-    {
-      var Player = getOneIntersectingObject(Player.class);
-      if(Player != null)
+    
+    public void eliminatePlayer()
+    {    
+        Actor player = getOneIntersectingObject(Player.class);
+        if(player != null)
         { 
            World world = getWorld();
-           world.removeObject(Player);
-           
-        }
-      
-      
-      }
-    
-      public boolean isGameLost()
-   {
-    World world = getWorld();
-    if(world.getObjects(Player.class).isEmpty())
-        {
-            return true;
-    }else{    
-            return false;
+           world.removeObject(player);
         } 
-   }
-    
-    public void transitionToYouLostWorld()
-    {
-        getWorld().stopped();
-        World YouLostWorld = new YouLostWorld();
-        YouLostWorld.started();
-        Greenfoot.setWorld(YouLostWorld);
-    
     }
-    
 }
 

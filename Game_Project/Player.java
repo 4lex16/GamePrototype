@@ -6,18 +6,19 @@ public class Player extends Actor
     private int movement_speed;
     
     
- public void act()
+    public void act()
     {
         aim();
         movement();
     }
- public void aim()
+    
+    public void aim()
     {
         MouseInfo mouse = Greenfoot.getMouseInfo();
         if (mouse != null)
         {
             if (fire_delay <= 0 && (Greenfoot.mouseClicked(null) || Greenfoot.isKeyDown("space")))
-            {
+            {   
                 double adjacent = (mouse.getX() - getX());
                 double opposite = (mouse.getY() - getY());
                 
@@ -30,24 +31,21 @@ public class Player extends Actor
                 fire_delay = 50;
             }
             else
-         {
+            {
                 fire_delay -= 1;
             }
         }
-    } 
+    }
+    
     public void movement()
     {
         if ((Greenfoot.mouseClicked(null) || Greenfoot.isKeyDown("space")))
         {
             movement_speed = 1;
         }
-        else if (Greenfoot.isKeyDown("shift"))
-        {
-            movement_speed = 3;
-        }
         else
         {
-            movement_speed = 2;
+            movement_speed = 3;
         }
         if (Greenfoot.isKeyDown("w"))
         {
@@ -69,9 +67,9 @@ public class Player extends Actor
             setRotation(0);
             move(movement_speed);
         }
- } 
- 
- }
+    } 
+
+}
 
 
 

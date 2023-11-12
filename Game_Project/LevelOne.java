@@ -10,7 +10,7 @@ public class LevelOne extends World
 {
     private static int WW = 1600;
     private static int WH = 900;
-    private int spawn_duration = 1;
+    private int spawn_duration = 100;
     private int spawn_cap = 10;
     private int timer = 61;
     
@@ -45,25 +45,58 @@ public class LevelOne extends World
         int spawn_num = this.getObjects(Ennemy.class).size();
         while (spawn_num < spawn_cap && spawn_duration <= 0)
         {
-            Ennemy ennemy = new Ennemy();
+            Fan fan = new Fan();
+            Media media = new Media();
             int randomNum = Greenfoot.getRandomNumber(4);
             if (randomNum == 0)
             {
-                addObject(ennemy,Greenfoot.getRandomNumber(WW), 0);
+                randomNum = Greenfoot.getRandomNumber(2);
+                if (randomNum == 0)
+                {
+                    addObject(fan,Greenfoot.getRandomNumber(WW), 0);
+                }
+                if (randomNum == 1)
+                {
+                    addObject(media,Greenfoot.getRandomNumber(WW), 0);
+                }
             }
             if (randomNum == 1)
             {
-                addObject(ennemy,0, Greenfoot.getRandomNumber(WH));
+                randomNum = Greenfoot.getRandomNumber(2);
+                if (randomNum == 0)
+                {
+                    addObject(fan,0, Greenfoot.getRandomNumber(WH));
+                }
+                if (randomNum == 1)
+                {
+                    addObject(media,0, Greenfoot.getRandomNumber(WH));
+                }
             }
             if (randomNum == 2)
             {
-                addObject(ennemy,Greenfoot.getRandomNumber(WW), WH);
+                randomNum = Greenfoot.getRandomNumber(2);
+                if (randomNum == 0)
+                {
+                    addObject(fan,Greenfoot.getRandomNumber(WW), WH);
+                }
+                if (randomNum == 1)
+                {
+                    addObject(media,Greenfoot.getRandomNumber(WW), WH);
+                }
             }
             if (randomNum == 3)
             {
-                addObject(ennemy,WW, Greenfoot.getRandomNumber(WH));
+                randomNum = Greenfoot.getRandomNumber(2);
+                if (randomNum == 0)
+                {
+                    addObject(fan,WW, Greenfoot.getRandomNumber(WH));
+                }
+                if (randomNum == 1)
+                {
+                    addObject(media,WW, Greenfoot.getRandomNumber(WH));
+                }
             }
-            spawn_duration = 150;
+            spawn_duration = 200;
             spawn_num = this.getObjects(Ennemy.class).size();
         }
         spawn_duration -= 1;
@@ -86,7 +119,32 @@ public class LevelOne extends World
                 Greenfoot.setWorld (new LevelTwo());
             }
         }
+        
         spawn();
+        if (isGameLost())
+        {
+            transitionToYouLostWorld();
+        }
+    }
+    
+    public boolean isGameLost()
+    {
+        if(this.getObjects(Player.class).isEmpty())
+        {
+            return true;
+        }
+        else
+        {    
+            return false;
+        } 
+    }
+    
+    public void transitionToYouLostWorld()
+    {
+        this.stopped();
+        World YouLostWorld = new YouLostWorld();
+        YouLostWorld.started();
+        Greenfoot.setWorld(YouLostWorld);
     }
     
 }

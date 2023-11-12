@@ -47,6 +47,10 @@ public class LevelThree extends World
             }
         }
         spawn();
+        if (isGameLost())
+        {
+            transitionToYouLostWorld();
+        }
     }
 
     public void spawn()
@@ -54,38 +58,87 @@ public class LevelThree extends World
         int spawn_num = this.getObjects(Ennemy.class).size();
         while (spawn_num < spawn_cap && spawn_duration <= 0)
         {
-            Ennemy ennemy = new Ennemy();
+            Fan fan = new Fan();
+            Media media = new Media();
             int randomNum = Greenfoot.getRandomNumber(4);
             if (randomNum == 0)
             {
-                addObject(ennemy,Greenfoot.getRandomNumber(WW), 0);
+                randomNum = Greenfoot.getRandomNumber(2);
+                if (randomNum == 0)
+                {
+                    addObject(fan,Greenfoot.getRandomNumber(WW), 0);
+                }
+                if (randomNum == 1)
+                {
+                    addObject(media,Greenfoot.getRandomNumber(WW), 0);
+                }
             }
             if (randomNum == 1)
             {
-                addObject(ennemy,0, Greenfoot.getRandomNumber(WH));
+                randomNum = Greenfoot.getRandomNumber(2);
+                if (randomNum == 0)
+                {
+                    addObject(fan,0, Greenfoot.getRandomNumber(WH));
+                }
+                if (randomNum == 1)
+                {
+                    addObject(media,0, Greenfoot.getRandomNumber(WH));
+                }
             }
             if (randomNum == 2)
             {
-                addObject(ennemy,Greenfoot.getRandomNumber(WW), WH);
+                randomNum = Greenfoot.getRandomNumber(2);
+                if (randomNum == 0)
+                {
+                    addObject(fan,Greenfoot.getRandomNumber(WW), WH);
+                }
+                if (randomNum == 1)
+                {
+                    addObject(media,Greenfoot.getRandomNumber(WW), WH);
+                }
             }
             if (randomNum == 3)
             {
-                addObject(ennemy,WW, Greenfoot.getRandomNumber(WH));
+                randomNum = Greenfoot.getRandomNumber(2);
+                if (randomNum == 0)
+                {
+                    addObject(fan,WW, Greenfoot.getRandomNumber(WH));
+                }
+                if (randomNum == 1)
+                {
+                    addObject(media,WW, Greenfoot.getRandomNumber(WH));
+                }
             }
-            spawn_duration = 150;
+            spawn_duration = 200;
             spawn_num = this.getObjects(Ennemy.class).size();
         }
         spawn_duration -= 1;
     }
-    /**
-     * Prepare the world for the start of the program.
-     * That is: create the initial objects and add them to the world.
-     */
+    
     private void prepare()
     {
         Player player = new Player();
         addObject(player,1327,463);
     }
     
+    public boolean isGameLost()
+    {
+        if(this.getObjects(Player.class).isEmpty())
+        {
+            return true;
+        }
+        else
+        {    
+            return false;
+        } 
+    }
+    
+    public void transitionToYouLostWorld()
+    {
+        this.stopped();
+        World YouLostWorld = new YouLostWorld();
+        YouLostWorld.started();
+        Greenfoot.setWorld(YouLostWorld);
+    }
     
 }
