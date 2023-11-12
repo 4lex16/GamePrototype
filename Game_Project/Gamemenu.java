@@ -11,10 +11,13 @@ public class Gamemenu extends World
         super(WW, WH, 1); 
         prepare();
     }
+    
     private void prepare()
     {
         GreenfootImage boxArt = new GreenfootImage("BoxArt.png");
         Picture boxArtPic = new Picture(boxArt);
         addObject(boxArtPic, WW/2, WH/2-300);
+        Play play = new Play();
+        addObject(play,WW/2,WH/2);
     }
 }
