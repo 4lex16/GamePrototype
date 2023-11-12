@@ -8,8 +8,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class LevelOne extends World
 {
-    private static int WW = 1000;
-    private static int WH = 800;
+    private static int WW = 1600;
+    private static int WH = 900;
     private int spawn_duration = 1;
     private int spawn_cap = 10;
     private int timer = 61;

@@ -8,8 +8,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class LevelTwo extends World
 {
-    private static int WW = 1000;
-    private static int WH = 800;
+    private static int WW = 1600;
+    private static int WH = 900;
     private int spawn_duration = 250;
     private int spawn_cap = 10;
     SimpleTimer tim = new SimpleTimer();

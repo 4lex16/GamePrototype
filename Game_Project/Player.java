@@ -8,9 +8,8 @@ public class Player extends Actor
     
  public void act()
     {
-        movement();
         aim();
-        
+        movement();
     }
  public void aim()
     {
@@ -38,7 +37,11 @@ public class Player extends Actor
     } 
     public void movement()
     {
-        if (Greenfoot.isKeyDown("shift"))
+        if ((Greenfoot.mouseClicked(null) || Greenfoot.isKeyDown("space")))
+        {
+            movement_speed = 1;
+        }
+        else if (Greenfoot.isKeyDown("shift"))
         {
             movement_speed = 3;
         }
