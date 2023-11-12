@@ -39,11 +39,11 @@ public class LevelThree extends World
             showText("Time left: "+ timer, 830,50);
             if(timer <= 0)
             {
-                World levelOne = this;
-                levelOne.stopped();
-                World levelTwo = new LevelTwo();
-                levelTwo.started();
-                Greenfoot.setWorld (new LevelTwo());
+                World levelThree = this;
+                levelThree.stopped();
+                World YouWonWorld = new YouWonWorld();
+                YouWonWorld.started();
+                Greenfoot.setWorld (YouWonWorld);
             }
         }
         spawn();
@@ -86,4 +86,6 @@ public class LevelThree extends World
         Player player = new Player();
         addObject(player,1327,463);
     }
+    
+    
 }

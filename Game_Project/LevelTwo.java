@@ -71,7 +71,11 @@ public class LevelTwo extends World
             showText("Time left: "+ timer, 830,50);
             if(timer <= 0)
             {
-                Greenfoot.stop();
+                World levelTwo = this;
+                levelTwo.stopped();
+                World levelThree = new LevelThree();
+                levelThree.started();
+                Greenfoot.setWorld (new LevelThree());
             }    
         }
         spawn();
