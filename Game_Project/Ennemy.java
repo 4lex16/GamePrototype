@@ -71,4 +71,12 @@ public class Ennemy extends Actor
            world.removeObject(player);
         } 
     }
+    
+    public void collision()
+    {
+        if (isTouching(Ennemy.class))
+        {
+            move(0);
+        }
+    }
 }

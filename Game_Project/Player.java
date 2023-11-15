@@ -27,7 +27,7 @@ public class Player extends Actor
                 
                 Actor puck = new Puck();
                 getWorld().addObject(puck, getX(), getY());
-                puck.setRotation((int)angleDegrees);
+                puck.setRotation((int) angleDegrees);
                 fire_delay = 50;
             }
             else
@@ -49,23 +49,19 @@ public class Player extends Actor
         }
         if (Greenfoot.isKeyDown("w"))
         {
-            setRotation(270);
-            move(movement_speed);
+            setLocation(getX(), getY() - movement_speed);
         }
         if (Greenfoot.isKeyDown("s"))
         {
-            setRotation(90);
-            move(movement_speed);
+            setLocation(getX(), getY() + movement_speed);
         }
         if (Greenfoot.isKeyDown("a"))
         {
-            setRotation(180);
-            move(movement_speed);
+            setLocation(getX() - movement_speed, getY());
         }
         if (Greenfoot.isKeyDown("d"))
         {
-            setRotation(0);
-            move(movement_speed);
+            setLocation(getX() + movement_speed, getY());
         }
     } 
 

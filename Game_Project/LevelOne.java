@@ -104,6 +104,7 @@ public class LevelOne extends World
     
     public void act()
     {  
+        setPaintOrder(Player.class, Puck.class);
         if(tim.millisElapsed() > 1000)
         {
             timeCount.add(-1);

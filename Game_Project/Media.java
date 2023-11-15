@@ -16,9 +16,9 @@ public class Media extends Ennemy
             setStats(1, 6, 0);
             constructed = true;
         }
-        
-        eliminatePlayer();
+        collision();
         goTowardsPlayer();
+        eliminatePlayer();
         die();
     }
 }
