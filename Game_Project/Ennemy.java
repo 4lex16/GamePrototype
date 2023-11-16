@@ -66,9 +66,16 @@ public class Ennemy extends Actor
     {    
         Actor player = getOneIntersectingObject(Player.class);
         if(player != null)
-        { 
-           World world = getWorld();
-           world.removeObject(player);
+        {
+            if (getWorld().getObjects(Player.class).get(0).getHealth() <= 0) 
+            {
+                World world = getWorld();
+                world.removeObject(player);
+            }
+            else
+            {
+                getWorld().getObjects(Player.class).get(0).loseHealth();
+            }
         } 
     }
     

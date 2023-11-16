@@ -4,6 +4,9 @@ public class Player extends Actor
     private int fire_delay = 0;
     private boolean shooting;
     private int movement_speed;
+    private int health = 3;
+    private int invincibilityFrames = 0;
+    private int invincibilityFramesDuration = 100;
     
     
     public void act()
@@ -11,7 +14,35 @@ public class Player extends Actor
         aim();
         movement();
     }
-    
+    public int getHealth()
+    {
+        return health;
+    }
+    public void transparency()
+    {
+        if (invincibilityFramesDuration > 0) 
+        {
+            this.getImage().setTransparency(100);
+        }
+        else if (invincibilityFramesDuration < 0) {this.getImage().setTransparency(100);}
+        else
+        {
+            invincibilityFramesDuration -=1;
+        }       
+    }
+    public void loseHealth()
+    {
+        if (invincibilityFrames < 0)
+        {
+            transparency();
+            this.health -=1;
+            invincibilityFrames = 100;
+        }
+        else
+        {
+            invincibilityFrames -= 1;
+        }
+    }
     public void aim()
     {
         MouseInfo mouse = Greenfoot.getMouseInfo();
