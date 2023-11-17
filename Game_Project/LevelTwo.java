@@ -28,11 +28,18 @@ public class LevelTwo extends World
         //timeCount.setValue(60);
         act();
     }
+    
     private void prepare()
     {
         Player player = new Player();
         addObject(player,(WW/2),(WH/2)); 
+        ExitGame exitGame = new ExitGame();
+        addObject(exitGame,1490,860);
+        exitGame.setLocation(1505,871);
+        exitGame.setLocation(1509,868);
+        exitGame.setLocation(1488,857);
     }
+
     public void spawn()
     {
         int spawn_num = this.getObjects(Ennemy.class).size();

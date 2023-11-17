@@ -5,7 +5,7 @@ public class Play extends Button
 {
     public Play()
     {
-        GreenfootImage playButton = new GreenfootImage(100, 60);
+        GreenfootImage playButton = new GreenfootImage(150, 60);
         Font adjustFont = new Font(true, false, 50);
         playButton.setFont(adjustFont);
         playButton.setColor(Color.BLACK);

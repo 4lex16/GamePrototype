@@ -38,6 +38,9 @@ public class LevelOne extends World
     {
         Player player = new Player();
         addObject(player,(WW/2),(WH/2));
+        ExitGame exitGame2 = new ExitGame();
+        addObject(exitGame2,1509,878);
+        exitGame2.setLocation(1500,866);
     }
 
     public void spawn()

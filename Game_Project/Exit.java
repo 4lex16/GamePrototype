@@ -8,12 +8,22 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Exit extends Button
 {
-    /**
-     * Act - do whatever the Exit wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
+    public Exit()
+    {
+        GreenfootImage exitButton = new GreenfootImage(100, 60);
+        Font adjustFont = new Font(true, false, 50);
+        exitButton.setFont(adjustFont);
+        exitButton.setColor(Color.BLACK);
+        exitButton.drawString("Exit", 0, 50);
+        setImage(exitButton);
+    }
     public void act()
     {
-        // Add your action code here.
+        checkMouse();
+        
+        if (Greenfoot.mouseClicked(this))
+        {
+            Greenfoot.setWorld(new Gamemenu());
+        }
     }
 }

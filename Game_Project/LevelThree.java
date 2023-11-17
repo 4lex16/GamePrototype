@@ -119,6 +119,11 @@ public class LevelThree extends World
     {
         Player player = new Player();
         addObject(player,1327,463);
+        ExitGame exitGame = new ExitGame();
+        addObject(exitGame,1441,863);
+        exitGame.setLocation(1510,861);
+        exitGame.setLocation(1473,862);
+        exitGame.setLocation(1481,863);
     }
     
     public boolean isGameLost()
