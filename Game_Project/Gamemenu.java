@@ -29,6 +29,14 @@ public class Gamemenu extends World
         instructions.setLocation(803,528);
 
         instructions.setLocation(815,546);
+        VanierCollege vanierCollege = new VanierCollege();
+        addObject(vanierCollege,715,731);
+        vanierCollege.setLocation(1106,742);
+        removeObject(vanierCollege);
+        
+        addObject(vanierCollege,165,65);
+        vanierCollege.setLocation(181,112);
+        vanierCollege.setLocation(222,85);
     }
     
     /**public void showTextWithBlackFont(String message, int x, int y){
