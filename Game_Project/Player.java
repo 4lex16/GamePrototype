@@ -1,4 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import java.util.ArrayList;
 public class Player extends Actor
 {
     private int fire_delay = 0;
@@ -6,41 +7,48 @@ public class Player extends Actor
     private int movement_speed;
     private int health = 3;
     private int invincibilityFrames = 0;
-    private int invincibilityFramesDuration = 100;
+    private int invincibilityFramesDuration = 50;
     
     
     public void act()
     {
         aim();
         movement();
+        setNormal();
+        invincibilityFrames -= 1;
     }
     public int getHealth()
     {
         return health;
     }
-    public void transparency()
+    public void setNormal()
     {
-        if (invincibilityFramesDuration > 0) 
+        if (invincibilityFramesDuration < 0) 
         {
-            this.getImage().setTransparency(100);
+            this.setImage("Dark_Circle.png");
         }
-        else if (invincibilityFramesDuration < 0) {this.getImage().setTransparency(100);}
         else
         {
             invincibilityFramesDuration -=1;
-        }       
+        } 
+    }
+    public void transparency()
+    {
+        if (invincibilityFramesDuration < 0) 
+        {
+            invincibilityFramesDuration = 50;
+            this.setImage("Gray_Circle.png");
+        }     
     }
     public void loseHealth()
     {
         if (invincibilityFrames < 0)
         {
+            ArrayList<Heart> hearts = LevelOne.getHearts();
             transparency();
             this.health -=1;
-            invincibilityFrames = 100;
-        }
-        else
-        {
-            invincibilityFrames -= 1;
+            //hearts.remove(hearts.size() - 1);
+            invincibilityFrames = 50;
         }
     }
     public void aim()

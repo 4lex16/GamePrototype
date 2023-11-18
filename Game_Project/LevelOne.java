@@ -1,4 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import java.util.ArrayList;
 
 /**
  * Write a description of class LevelOne here.
@@ -13,14 +14,18 @@ public class LevelOne extends World
     private int spawn_duration = 100;
     private int spawn_cap = 10;
     private int timer = 61;
+    private static ArrayList<Heart> hearts = new ArrayList<Heart>();
     
     SimpleTimer tim = new SimpleTimer();
     Counter timeCount =new Counter();
     int end = 0;
-    /**
-     * Constructor for objects of class LevelOne.
-     * 
-     */
+    
+    
+    public static ArrayList getHearts()
+    {
+        return hearts;
+    }
+    
     public LevelOne()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
@@ -41,8 +46,16 @@ public class LevelOne extends World
         ExitGame exitGame2 = new ExitGame();
         addObject(exitGame2,1509,878);
         exitGame2.setLocation(1500,866);
+        /*
+        ArrayList<Heart> hearts = new ArrayList<Heart>();
+        for (int i = 0; i < 3; i++)
+        {
+            Heart heart = new Heart();
+            hearts.add(heart);
+            addObject(heart, (100 + (60*i)), 50);
+        }
+        */
     }
-
     public void spawn()
     {
         int spawn_num = this.getObjects(Ennemy.class).size();
