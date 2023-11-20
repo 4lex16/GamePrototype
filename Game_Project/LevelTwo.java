@@ -1,11 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
-/**
- * Write a description of class LevelTwo here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
 public class LevelTwo extends World
 {
     private static int WW = 1600;
@@ -19,19 +13,20 @@ public class LevelTwo extends World
      * Constructor for objects of class LevelTwo.
      * 
      */
-    public LevelTwo()
+    public LevelTwo(int playerHealth)
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(WW, WH, 1);
-        prepare();
+        prepare(playerHealth);
         //addObject(timeCount,950 , 50); 
         //timeCount.setValue(60);
         act();
     }
     
-    private void prepare()
+    private void prepare(int playerHealth)
     {
         Player player = new Player();
+        player.setHealth(playerHealth);
         addObject(player,(WW/2),(WH/2)); 
         ExitGame exitGame = new ExitGame();
         addObject(exitGame,1490,860);
@@ -112,10 +107,10 @@ public class LevelTwo extends World
             if(timer <= 0)
             {
                 World levelTwo = this;
+                World levelThree = new LevelThree(this.getObjects(Player.class).get(0).getHealth());
                 levelTwo.stopped();
-                World levelThree = new LevelThree();
                 levelThree.started();
-                Greenfoot.setWorld (new LevelThree());
+                Greenfoot.setWorld (levelThree);
             }    
         }
         spawn();

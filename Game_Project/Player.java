@@ -8,7 +8,7 @@ public class Player extends Actor
     private int health = 3;
     private int invincibilityFrames = 0;
     private int invincibilityFramesDuration = 50;
-    
+    private static ArrayList<Heart> hearts = new ArrayList<Heart>();
     
     public void act()
     {
@@ -16,10 +16,15 @@ public class Player extends Actor
         movement();
         setNormal();
         invincibilityFrames -= 1;
+        updateHeart(this.health);
     }
     public int getHealth()
     {
         return health;
+    }
+    public void setHealth(int health)
+    {
+        this.health = health;
     }
     public void setNormal()
     {
@@ -44,7 +49,6 @@ public class Player extends Actor
     {
         if (invincibilityFrames < 0)
         {
-            ArrayList<Heart> hearts = LevelOne.getHearts();
             transparency();
             this.health -=1;
             //hearts.remove(hearts.size() - 1);
@@ -103,7 +107,16 @@ public class Player extends Actor
             setLocation(getX() + movement_speed, getY());
         }
     } 
-
+    public void updateHeart(int numHearts)
+    {
+        getWorld().removeObjects(hearts);
+        for (int i = 0; i < numHearts; i++)
+        {
+            Heart heart = new Heart();
+            hearts.add(heart);
+            getWorld().addObject(heart, (100 + (60*i)), 50);
+        }
+    }
 }
 
 

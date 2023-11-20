@@ -1,11 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
-/**
- * Write a description of class LevelThree here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
 public class LevelThree extends World
 {
     private int spawn_duration = 250;
@@ -22,11 +16,12 @@ public class LevelThree extends World
      * Constructor for objects of class LevelThree.
      * 
      */
-    public LevelThree()
+    public LevelThree(int playerHealth)
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(WW, WH, 1); 
-        prepare();
+        prepare(playerHealth);
+        act();
     }
 
     public void act()
@@ -115,9 +110,10 @@ public class LevelThree extends World
         spawn_duration -= 1;
     }
     
-    private void prepare()
+    private void prepare(int playerHealth)
     {
         Player player = new Player();
+        player.setHealth(playerHealth);
         addObject(player,1327,463);
         ExitGame exitGame = new ExitGame();
         addObject(exitGame,1441,863);
