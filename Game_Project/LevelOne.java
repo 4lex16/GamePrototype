@@ -8,6 +8,7 @@ public class LevelOne extends World
     private int spawn_duration = 100;
     private int spawn_cap = 10;
     private int timer = 61;
+    private boolean timerEnded = false;
     
     
     SimpleTimer tim = new SimpleTimer();
@@ -15,17 +16,12 @@ public class LevelOne extends World
     int end = 0;
     
     public LevelOne()
-    {    
-        // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
+    {
         super(WW, WH, 1);
-        //timer
-        //addObject(timeCount,950 , 50); 
-        //timeCount.setValue(60);
         act();
         prepare();
+        setPaintOrder(Player.class, Puck.class);
     }
-    
-    
     private void prepare()
     {
         Player player = new Player();
@@ -34,7 +30,62 @@ public class LevelOne extends World
         addObject(exitGame2,1509,878);
         exitGame2.setLocation(1500,866);
     }
+    public void act()
+    {
+        timer();
+        if (!timerEnded)
+        {
+            spawn();
+        }
+        if (isGameLost())
+        {
+            transitionToYouLostWorld();
+        }
+    }
+    public boolean isGameLost()
+    {
+        if(this.getObjects(Player.class).isEmpty())
+        {
+            return true;
+        }
+        else
+        {    
+            return false;
+        } 
+    }
     
+    public void transitionToYouLostWorld()
+    {
+        this.stopped();
+        World YouLostWorld = new YouLostWorld();
+        YouLostWorld.started();
+        Greenfoot.setWorld(YouLostWorld);
+    }
+    public void transitionToLevelTwo()
+    {
+        if (this.getObjects(Ennemy.class).size() - 1 <= 0)
+        {
+            World levelOne = this;
+            World levelTwo = new LevelTwo(this.getObjects(Player.class).get(0).getHealth());
+            levelOne.stopped();
+            levelTwo.started();
+            Greenfoot.setWorld(levelTwo);
+        }
+    }
+    public void timer()
+    {
+       if(tim.millisElapsed() > 1000)
+        {
+            timeCount.add(-1);
+            tim.mark();
+            timer--;
+            showText("Time left: "+ timer, 830,50);
+            if(timer <= 0)
+            {
+                timerEnded = true; 
+            }
+        } 
+    }
     public void spawn()
     {
         int spawn_num = this.getObjects(Ennemy.class).size();
@@ -95,52 +146,6 @@ public class LevelOne extends World
             spawn_num = this.getObjects(Ennemy.class).size();
         }
         spawn_duration -= 1;
-    }
-    
-    public void act()
-    {  
-        setPaintOrder(Player.class, Puck.class);
-        if(tim.millisElapsed() > 1000)
-        {
-            timeCount.add(-1);
-            tim.mark();
-            timer--;
-            showText("Time left: "+ timer, 830,50);
-            if(timer <= 0)
-            {
-                World levelOne = this;
-                World levelTwo = new LevelTwo(this.getObjects(Player.class).get(0).getHealth());
-                levelOne.stopped();
-                levelTwo.started();
-                Greenfoot.setWorld(levelTwo);
-            }
-        }
-        
-        spawn();
-        if (isGameLost())
-        {
-            transitionToYouLostWorld();
-        }
-    }
-    
-    public boolean isGameLost()
-    {
-        if(this.getObjects(Player.class).isEmpty())
-        {
-            return true;
-        }
-        else
-        {    
-            return false;
-        } 
-    }
-    
-    public void transitionToYouLostWorld()
-    {
-        this.stopped();
-        World YouLostWorld = new YouLostWorld();
-        YouLostWorld.started();
-        Greenfoot.setWorld(YouLostWorld);
     }
     
 }
