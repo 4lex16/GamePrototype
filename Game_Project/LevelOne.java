@@ -10,6 +10,7 @@ public class LevelOne extends World
     
     
     public GreenfootSound gfs_LevelOne_World = new GreenfootSound("boss_battle_8_retro_01_loop.wav");
+    public GreenfootSound gfs_YouLostWorld;
     
     SimpleTimer tim = new SimpleTimer();
     Counter timeCount =new Counter();
@@ -21,6 +22,7 @@ public class LevelOne extends World
         super(WW, WH, 1);
         act();
         gfs_LevelOne_World = new GreenfootSound("boss_battle_8_retro_01_loop.wav");
+        gfs_YouLostWorld = new GreenfootSound("prologue.wav");
         prepare();
         setPaintOrder(Player.class, Puck.class);
     }
@@ -75,10 +77,12 @@ public class LevelOne extends World
     public void transitionToYouLostWorld()
     {
         this.stopped();
+        gfs_LevelOne_World.stop();
         World YouLostWorld = new YouLostWorld();
-        YouLostWorld.started();
         Greenfoot.setWorld(YouLostWorld);
     }
+    
+    
     public void transitionToLevelTwo()
     {
         if (this.getObjects(Ennemy.class).size() - 1 <= 0)

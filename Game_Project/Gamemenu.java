@@ -8,9 +8,9 @@ public class Gamemenu extends World
     public Gamemenu()
     {    
         super(WW, WH, 1); 
-        
-        prepare();
         gfs_Gamemenu_World = new GreenfootSound("boss_battle_#2_metal_loop.wav");
+        prepare();
+        
     }
     
     private void prepare()

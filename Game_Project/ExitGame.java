@@ -10,6 +10,7 @@ public class ExitGame extends Button
 {
     
     
+    
     public ExitGame()
     {
         GreenfootImage exitGameButton = new GreenfootImage(300, 60);
@@ -18,6 +19,7 @@ public class ExitGame extends Button
         exitGameButton.setColor(Color.WHITE);
         exitGameButton.drawString("Exit Game", 0, 50);
         setImage(exitGameButton);
+      
     }
     public void act()
     {
@@ -26,6 +28,8 @@ public class ExitGame extends Button
         if (Greenfoot.mouseClicked(this))
         {
             Greenfoot.setWorld(new Gamemenu());
+            
+
         }
     }
 }
