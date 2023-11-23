@@ -5,6 +5,7 @@ public class Gamemenu extends World
 
     private static int WW = 1600;
     private static int WH = 900;
+    public GreenfootSound gfs_gameMenu_World = new GreenfootSound("boss_battle_#2_metal_loop.wav");
     
     public Gamemenu()
     {    
@@ -39,12 +40,13 @@ public class Gamemenu extends World
         vanierCollege.setLocation(222,85);
     }
     
-    /**public void showTextWithBlackFont(String message, int x, int y){
-        var  bg = getBackground(); 
-        Font font = new Font(50);
-        bg.setFont(font);
-        bg.setColor(Color.BLACK);
-        bg.drawString(message,x, y);
+    public void started(){
+        gfs_gameMenu_World.playLoop();
     
-    }*/
+    }
+    
+    public void stopped(){
+        gfs_gameMenu_World.stop();
+    
+    }
 }
