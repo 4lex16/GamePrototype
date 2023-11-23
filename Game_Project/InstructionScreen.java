@@ -10,6 +10,7 @@ public class InstructionScreen extends World
 {
     private static int WW = 1600;
     private static int WH = 900;
+    public GreenfootSound gfs_InstructionMenu_World; 
     /**
      * Constructor for objects of class InstructionScreen.
      * 
@@ -24,6 +25,7 @@ public class InstructionScreen extends World
         showMechanicsWithBlackFont("Move Up              : click W \nMove Down         : click S \nMove Right         : click D" + 
             "\nMove Left           : click A \nShoot                 : click Space \nAim                    : point Mouse towards enemy ", 600, 400 );
         prepare();
+        gfs_InstructionMenu_World = new GreenfootSound("boss_battle_#2_metal_loop.wav");
     }
 
     public void showTextWithBlackFont(String message, int x, int y){
@@ -70,4 +72,15 @@ public class InstructionScreen extends World
         exit.setLocation(830,660);
         exit.setLocation(828,693);
     }
+    
+    public void started(){
+        gfs_InstructionMenu_World.playLoop();
+    
+    }
+    
+    public void stopped(){
+        gfs_InstructionMenu_World.stop();
+    
+    }
 }
+

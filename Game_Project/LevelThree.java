@@ -7,6 +7,8 @@ public class LevelThree extends World
     private int timer = 61;
     private static int WW = 1600;
     private static int WH = 900;
+    
+    public GreenfootSound gfs_LevelThree_World;
 
     SimpleTimer tim = new SimpleTimer();
     Counter timeCount =new Counter();
@@ -22,6 +24,7 @@ public class LevelThree extends World
         super(WW, WH, 1); 
         prepare(playerHealth);
         act();
+        gfs_LevelThree_World = new GreenfootSound("Boss Battle #2 V2.wav");
     }
 
     public void act()
@@ -142,4 +145,13 @@ public class LevelThree extends World
         Greenfoot.setWorld(YouLostWorld);
     }
     
+    public void started(){
+        gfs_LevelThree_World.playLoop();
+    
+    }
+    
+    public void Stopped(){
+        gfs_LevelThree_World.stop();
+    
+    }
 }

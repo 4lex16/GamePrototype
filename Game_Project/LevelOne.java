@@ -1,5 +1,4 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-import java.util.ArrayList;
 
 public class LevelOne extends World
 {
@@ -8,18 +7,21 @@ public class LevelOne extends World
     private int spawn_duration = 100;
     private int spawn_cap = 10;
     private int timer = 61;
-    private boolean timerEnded = false;
     
+    
+    public GreenfootSound gfs_LevelOne_World = new GreenfootSound("boss_battle_8_retro_01_loop.wav");
     
     SimpleTimer tim = new SimpleTimer();
     Counter timeCount =new Counter();
     int end = 0;
+    private boolean timerEnded;
     
     public LevelOne()
     {
         super(WW, WH, 1);
         act();
         prepare();
+        gfs_LevelOne_World = new GreenfootSound("boss_battle_8_retro_01_loop.wav");
         setPaintOrder(Player.class, Puck.class);
     }
     private void prepare()
@@ -32,7 +34,21 @@ public class LevelOne extends World
     }
     public void act()
     {
-        timer();
+        if(tim.millisElapsed() > 1000)
+        {
+            timeCount.add(-1);
+            tim.mark();
+            timer--;
+            showText("Time left: "+ timer, 830,50);
+            if(timer <= 0)
+            {
+                World levelOne = this;
+                levelOne.stopped();
+                World LevelTwo = new LevelTwo(2);
+                LevelTwo.started();
+                Greenfoot.setWorld (LevelTwo);
+            }
+        }
         if (!timerEnded)
         {
             spawn();
@@ -41,6 +57,7 @@ public class LevelOne extends World
         {
             transitionToYouLostWorld();
         }
+    
     }
     public boolean isGameLost()
     {
@@ -72,20 +89,7 @@ public class LevelOne extends World
             Greenfoot.setWorld(levelTwo);
         }
     }
-    public void timer()
-    {
-       if(tim.millisElapsed() > 1000)
-        {
-            timeCount.add(-1);
-            tim.mark();
-            timer--;
-            showText("Time left: "+ timer, 830,50);
-            if(timer <= 0)
-            {
-                timerEnded = true; 
-            }
-        } 
-    }
+    
     public void spawn()
     {
         int spawn_num = this.getObjects(Ennemy.class).size();
@@ -148,6 +152,15 @@ public class LevelOne extends World
         spawn_duration -= 1;
     }
     
+    public void started(){
+        gfs_LevelOne_World.playLoop();
+    
+    }
+    
+    public void stopped(){
+        gfs_LevelOne_World.stop();
+    
+    }
 }
     
    

@@ -5,13 +5,12 @@ public class Gamemenu extends World
 
     private static int WW = 1600;
     private static int WH = 900;
-    public GreenfootSound gfs_gameMenu_World = new GreenfootSound("boss_battle_#2_metal_loop.wav");
-    
+    public GreenfootSound gfs_gameMenu_World;
     public Gamemenu()
     {    
         super(WW, WH, 1); 
-        //showTextWithBlackFont("Instruction",698 ,600);
         prepare();
+        gfs_gameMenu_World = new GreenfootSound("boss_battle_#2_metal_loop.wav");
     }
     
     private void prepare()
@@ -41,12 +40,14 @@ public class Gamemenu extends World
     }
     
     public void started(){
-        gfs_gameMenu_World.playLoop();
+        gfs_gameMenu_World.play();
     
     }
     
     public void stopped(){
-        gfs_gameMenu_World.stop();
+        
+            gfs_gameMenu_World.stop();
+        
     
     }
 }

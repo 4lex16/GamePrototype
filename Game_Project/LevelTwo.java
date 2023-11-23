@@ -8,6 +8,7 @@ public class LevelTwo extends World
     private int spawn_cap = 10;
     SimpleTimer tim = new SimpleTimer();
     Counter timeCount =new Counter();
+    public GreenfootSound gfs_LevelTwo_World;
     private int timer = 61;
     /**
      * Constructor for objects of class LevelTwo.
@@ -21,6 +22,7 @@ public class LevelTwo extends World
         //addObject(timeCount,950 , 50); 
         //timeCount.setValue(60);
         act();
+        gfs_LevelTwo_World = new GreenfootSound("Boss Battle #5 V2.wav");
     }
     
     private void prepare(int playerHealth)
@@ -137,5 +139,15 @@ public class LevelTwo extends World
         World YouLostWorld = new YouLostWorld();
         YouLostWorld.started();
         Greenfoot.setWorld(YouLostWorld);
+    }
+    
+    public void started(){
+        gfs_LevelTwo_World.playLoop();
+    
+    }
+    
+    public void stopped(){
+        gfs_LevelTwo_World.stop();
+    
     }
 }
