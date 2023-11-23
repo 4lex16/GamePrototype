@@ -2,15 +2,15 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 public class Gamemenu extends World
 {
-
     private static int WW = 1600;
     private static int WH = 900;
-    public GreenfootSound gfs_gameMenu_World;
+    public GreenfootSound gfs_Gamemenu_World;
     public Gamemenu()
     {    
         super(WW, WH, 1); 
+        
         prepare();
-        gfs_gameMenu_World = new GreenfootSound("boss_battle_#2_metal_loop.wav");
+        gfs_Gamemenu_World = new GreenfootSound("boss_battle_#2_metal_loop.wav");
     }
     
     private void prepare()
@@ -39,15 +39,13 @@ public class Gamemenu extends World
         vanierCollege.setLocation(222,85);
     }
     
-    public void started(){
-        gfs_gameMenu_World.play();
+    public void start(){
+        gfs_Gamemenu_World.play();
     
     }
     
     public void stopped(){
-        
-            gfs_gameMenu_World.stop();
-        
+        gfs_Gamemenu_World.stop();
     
     }
 }

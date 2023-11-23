@@ -136,6 +136,7 @@ public class LevelTwo extends World
     public void transitionToYouLostWorld()
     {
         this.stopped();
+        gfs_LevelTwo_World.stop();
         World YouLostWorld = new YouLostWorld();
         YouLostWorld.started();
         Greenfoot.setWorld(YouLostWorld);

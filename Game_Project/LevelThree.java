@@ -22,9 +22,9 @@ public class LevelThree extends World
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(WW, WH, 1); 
-        prepare(playerHealth);
         act();
         gfs_LevelThree_World = new GreenfootSound("Boss Battle #2 V2.wav");
+        prepare(playerHealth);
     }
 
     public void act()

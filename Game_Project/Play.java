@@ -20,6 +20,7 @@ public class Play extends Button
         if (Greenfoot.mouseClicked(this))
         {
             Greenfoot.setWorld(new LevelOne());
+            
         }
     }
 }

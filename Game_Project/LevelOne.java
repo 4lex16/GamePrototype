@@ -20,8 +20,8 @@ public class LevelOne extends World
     {
         super(WW, WH, 1);
         act();
-        prepare();
         gfs_LevelOne_World = new GreenfootSound("boss_battle_8_retro_01_loop.wav");
+        prepare();
         setPaintOrder(Player.class, Puck.class);
     }
     private void prepare()
@@ -44,6 +44,7 @@ public class LevelOne extends World
             {
                 World levelOne = this;
                 levelOne.stopped();
+                gfs_LevelOne_World.stop();
                 World LevelTwo = new LevelTwo(2);
                 LevelTwo.started();
                 Greenfoot.setWorld (LevelTwo);
@@ -85,6 +86,7 @@ public class LevelOne extends World
             World levelOne = this;
             World levelTwo = new LevelTwo(this.getObjects(Player.class).get(0).getHealth());
             levelOne.stopped();
+            gfs_LevelOne_World.stop();
             levelTwo.started();
             Greenfoot.setWorld(levelTwo);
         }

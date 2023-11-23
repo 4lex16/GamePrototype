@@ -8,6 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class YouWonWorld extends World
 {
+    public GreenfootSound gfs_YouWonWorld;
 
     /**
      * Constructor for objects of class YouWonWorld.
@@ -19,6 +20,7 @@ public class YouWonWorld extends World
         super(1600, 900, 1); 
         showTextWithBigWhiteFont("YOU ARE THE WINNER", 250,450);
         prepare();
+        gfs_YouWonWorld = new GreenfootSound("Ending.wav");
     }
 
     public void showTextWithBigWhiteFont(String message, int x, int y)
@@ -38,5 +40,15 @@ public class YouWonWorld extends World
         ExitGame exitGame = new ExitGame();
         addObject(exitGame,1499,821);
         exitGame.setLocation(1488,859);
+    }
+    
+    public void started(){
+        gfs_YouWonWorld.playLoop();
+    
+    }
+    
+    public void stopped(){
+        gfs_YouWonWorld.stop();
+    
     }
 }

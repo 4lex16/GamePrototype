@@ -23,6 +23,7 @@ public class Exit extends Button
         
         if (Greenfoot.mouseClicked(this))
         {
+            
             Greenfoot.setWorld(new Gamemenu());
         }
     }

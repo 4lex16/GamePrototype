@@ -19,13 +19,15 @@ public class InstructionScreen extends World
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(WW, WH, 1); 
+        
         showTextWithBlackFont("Instruction", 700, 200);
         showGoalWithBlackFont("Eliminate and escape from the enemies", 550, 250);
         showControlsWithBlackFont("Controls", 750, 350);
         showMechanicsWithBlackFont("Move Up              : click W \nMove Down         : click S \nMove Right         : click D" + 
             "\nMove Left           : click A \nShoot                 : click Space \nAim                    : point Mouse towards enemy ", 600, 400 );
-        prepare();
         gfs_InstructionMenu_World = new GreenfootSound("boss_battle_#2_metal_loop.wav");
+        prepare();
+        
     }
 
     public void showTextWithBlackFont(String message, int x, int y){
