@@ -8,7 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Instructions extends Button
 {
-    public GreenfootSound gfs_InstructionMenu_World; 
+     
     public Instructions()
     {
         GreenfootImage instructionsButton = new GreenfootImage(350, 50);
@@ -17,7 +17,7 @@ public class Instructions extends Button
         instructionsButton.setColor(Color.BLACK);
         instructionsButton.drawString("Instructions", 0, 50);
         setImage(instructionsButton);
-        gfs_InstructionMenu_World = new GreenfootSound("boss_battle_#2_metal_loop.wav");
+        
     }
     
     /**
@@ -31,7 +31,6 @@ public class Instructions extends Button
         if (Greenfoot.mouseClicked(this))
         {
             Greenfoot.setWorld(new InstructionScreen());
-            gfs_InstructionMenu_World.playLoop();
         }
     }
 }

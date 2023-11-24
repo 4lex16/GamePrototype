@@ -4,13 +4,12 @@ public class Gamemenu extends World
 {
     private static int WW = 1600;
     private static int WH = 900;
-    public GreenfootSound gfs_Gamemenu_World;
+    public GreenfootSound gfs_MainMenu_World;
     public Gamemenu()
     {    
         super(WW, WH, 1); 
-        gfs_Gamemenu_World = new GreenfootSound("boss_battle_#2_metal_loop.wav");
         prepare();
-        
+        gfs_MainMenu_World = new GreenfootSound("boss_battle_#2_metal_loop.wav");
     }
     
     private void prepare()
@@ -39,13 +38,11 @@ public class Gamemenu extends World
         vanierCollege.setLocation(222,85);
     }
     
-    public void start(){
-        gfs_Gamemenu_World.play();
-    
+    public void playSound(){
+        gfs_MainMenu_World.playLoop();
     }
     
-    public void stopped(){
-        gfs_Gamemenu_World.stop();
-    
+    public void stop(){
+        gfs_MainMenu_World.stop();
     }
 }

@@ -9,9 +9,6 @@ public class LevelOne extends World
     private int timer = 61;
     
     
-    public GreenfootSound gfs_LevelOne_World = new GreenfootSound("boss_battle_8_retro_01_loop.wav");
-    public GreenfootSound gfs_YouLostWorld;
-    
     SimpleTimer tim = new SimpleTimer();
     Counter timeCount =new Counter();
     int end = 0;
@@ -21,8 +18,6 @@ public class LevelOne extends World
     {
         super(WW, WH, 1);
         act();
-        gfs_LevelOne_World = new GreenfootSound("boss_battle_8_retro_01_loop.wav");
-        gfs_YouLostWorld = new GreenfootSound("prologue.wav");
         prepare();
         setPaintOrder(Player.class, Puck.class);
     }
@@ -46,7 +41,6 @@ public class LevelOne extends World
             {
                 World levelOne = this;
                 levelOne.stopped();
-                gfs_LevelOne_World.stop();
                 World LevelTwo = new LevelTwo(2);
                 LevelTwo.started();
                 Greenfoot.setWorld (LevelTwo);
@@ -77,8 +71,8 @@ public class LevelOne extends World
     public void transitionToYouLostWorld()
     {
         this.stopped();
-        gfs_LevelOne_World.stop();
         World YouLostWorld = new YouLostWorld();
+        
         Greenfoot.setWorld(YouLostWorld);
     }
     
@@ -90,7 +84,6 @@ public class LevelOne extends World
             World levelOne = this;
             World levelTwo = new LevelTwo(this.getObjects(Player.class).get(0).getHealth());
             levelOne.stopped();
-            gfs_LevelOne_World.stop();
             levelTwo.started();
             Greenfoot.setWorld(levelTwo);
         }
@@ -156,16 +149,6 @@ public class LevelOne extends World
             spawn_num = this.getObjects(Ennemy.class).size();
         }
         spawn_duration -= 1;
-    }
-    
-    public void started(){
-        gfs_LevelOne_World.playLoop();
-    
-    }
-    
-    public void stopped(){
-        gfs_LevelOne_World.stop();
-    
     }
 }
     
