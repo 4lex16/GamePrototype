@@ -11,7 +11,7 @@ public class LevelTwo extends World
     
     public GreenfootSound gfs_levelTwo_world;
 
-    private int timer = 61;
+    private int timer = 11;
     /**
      * Constructor for objects of class LevelTwo.
      * 
@@ -112,8 +112,8 @@ public class LevelTwo extends World
             if(timer <= 0)
             {
                 World levelTwo = this;
-                levelTwo.stopped();
                 World levelThree = new LevelThree(this.getObjects(Player.class).get(0).getHealth());
+                levelTwo.stopped();
                 levelThree.started();
                 Greenfoot.setWorld (levelThree);
             }    

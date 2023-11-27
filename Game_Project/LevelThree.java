@@ -4,7 +4,7 @@ public class LevelThree extends World
 {
     private int spawn_duration = 250;
     private int spawn_cap = 10;
-    private int timer = 61;
+    private int timer = 11;
     private static int WW = 1600;
     private static int WH = 900;
     public GreenfootSound gfs_levelThree_world;
@@ -22,7 +22,7 @@ public class LevelThree extends World
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(WW, WH, 1); 
-        act();
+        //act();
         gfs_levelThree_world = new GreenfootSound("Boss Battle #2 V2.wav");
         prepare(playerHealth);
     }
@@ -146,7 +146,7 @@ public class LevelThree extends World
     }
     
     public void started(){
-        gfs_levelThree_world.play();
+        gfs_levelThree_world.playLoop();
     }
     
     public void stopped(){
