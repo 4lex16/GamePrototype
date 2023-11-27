@@ -10,6 +10,8 @@ public class Player extends Actor
     private int invincibilityFramesDuration = 50;
     private static ArrayList<Heart> hearts = new ArrayList<Heart>();
     
+    private String playerDirection = "characterR.png";
+    
     public void act()
     {
         aim();
@@ -30,7 +32,7 @@ public class Player extends Actor
     {
         if (invincibilityFramesDuration < 0) 
         {
-            this.setImage("Dark_Circle.png");
+            this.setImage(playerDirection);
         }
         else
         {
@@ -101,10 +103,12 @@ public class Player extends Actor
         if (Greenfoot.isKeyDown("a"))
         {
             setLocation(getX() - movement_speed, getY());
+            playerDirection = "characterL.png";
         }
         if (Greenfoot.isKeyDown("d"))
         {
             setLocation(getX() + movement_speed, getY());
+            playerDirection = "characterR.png";
         }
     } 
     public void updateHeart(int numHearts)
