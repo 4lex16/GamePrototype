@@ -74,7 +74,10 @@ public class InstructionScreen extends World
         exit.setLocation(830,660);
         exit.setLocation(828,693);
     }
+    public void started(){
+        gfs_InstructionMenu_World.playLoop();
     
+    }
     
     public void stopped(){
         gfs_InstructionMenu_World.stop();

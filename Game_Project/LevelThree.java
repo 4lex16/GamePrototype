@@ -149,4 +149,7 @@ public class LevelThree extends World
         gfs_levelThree_world.play();
     }
     
+    public void stopped(){
+        gfs_levelThree_world.stop();
+    }
 }

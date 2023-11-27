@@ -30,7 +30,10 @@ public class Instructions extends Button
         
         if (Greenfoot.mouseClicked(this))
         {
-            Greenfoot.setWorld(new InstructionScreen());
+            getWorld().stopped();
+            World worldInstruction = new InstructionScreen();
+            worldInstruction.started();
+            Greenfoot.setWorld(worldInstruction);
         }
     }
 }
