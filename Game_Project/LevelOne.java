@@ -13,13 +13,16 @@ public class LevelOne extends World
     Counter timeCount =new Counter();
     int end = 0;
     private boolean timerEnded;
+    public GreenfootSound gfs_levelOne_world;
     
     public LevelOne()
     {
         super(WW, WH, 1);
-        act();
+        //act();
         prepare();
         setPaintOrder(Player.class, Puck.class);
+        gfs_levelOne_world = new GreenfootSound("boss_battle_8_retro_01_loop.wav");
+    
     }
     private void prepare()
     {
@@ -149,6 +152,16 @@ public class LevelOne extends World
             spawn_num = this.getObjects(Ennemy.class).size();
         }
         spawn_duration -= 1;
+    }
+    
+    public void stopped(){
+        gfs_levelOne_world.stop();
+        
+    
+    }
+    
+    public void started(){
+        gfs_levelOne_world.playLoop();
     }
 }
     

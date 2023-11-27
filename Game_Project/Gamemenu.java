@@ -5,6 +5,7 @@ public class Gamemenu extends World
     private static int WW = 1600;
     private static int WH = 900;
     public GreenfootSound gfs_MainMenu_World;
+    
     public Gamemenu()
     {    
         super(WW, WH, 1); 
@@ -38,11 +39,11 @@ public class Gamemenu extends World
         vanierCollege.setLocation(222,85);
     }
     
-    public void playSound(){
+    public void started(){
         gfs_MainMenu_World.playLoop();
     }
     
-    public void stop(){
+    public void stopped(){
         gfs_MainMenu_World.stop();
     }
 }

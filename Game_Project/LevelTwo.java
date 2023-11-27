@@ -23,7 +23,7 @@ public class LevelTwo extends World
         prepare(playerHealth);
         //addObject(timeCount,950 , 50); 
         //timeCount.setValue(60);
-        act();
+        //act();
         gfs_levelTwo_world = new GreenfootSound("Boss Battle #5 V2.wav");
         
     }
@@ -145,7 +145,7 @@ public class LevelTwo extends World
     }
     
     public void started(){
-        gfs_levelTwo_world.play();
+        gfs_levelTwo_world.playLoop();
         
     }
     

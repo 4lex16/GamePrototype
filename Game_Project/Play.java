@@ -5,7 +5,7 @@ import greenfoot.World;
 public class Play extends Button
 {
     private static boolean isPaused = false;
-    public GreenfootSound gfs_levelOne_world;
+    //public GreenfootSound gfs_levelOne_world;
      
     public Play()
     {
@@ -15,7 +15,7 @@ public class Play extends Button
         playButton.setColor(Color.BLACK);
         playButton.drawString("Play", 0, 50);
         setImage(playButton);
-        gfs_levelOne_world = new GreenfootSound("boss_battle_8_retro_01_loop.wav");
+        //gfs_levelOne_world = new GreenfootSound("boss_battle_8_retro_01_loop.wav");
     }
     
     public void act()
@@ -24,8 +24,11 @@ public class Play extends Button
         
         if (Greenfoot.mouseClicked(this))
         {
-            Greenfoot.setWorld(new LevelOne());
-            gfs_levelOne_world.play();
+            getWorld().stopped();
+            World world1 = new LevelOne();
+            world1.started();
+            Greenfoot.setWorld(world1);
+            //gfs_levelOne_world.play();
         }
     }
 }
