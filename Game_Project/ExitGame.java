@@ -27,10 +27,11 @@ public class ExitGame extends Button
         
         if (Greenfoot.mouseClicked(this))
         {
+            getWorld().stopped();
+            World worldGameMenu = new Gamemenu();
+            worldGameMenu.started();
+            Greenfoot.setWorld(worldGameMenu);
         
-            Greenfoot.setWorld(new Gamemenu());
-            
-
         }
     }
 }
