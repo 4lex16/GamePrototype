@@ -6,7 +6,7 @@ public class LevelOne extends World
     private static int WH = 900;
     private int spawn_duration = 100;
     private int spawn_cap = 10;
-    private int timer = 11;
+    private int timer = 61;
     
     
     SimpleTimer tim = new SimpleTimer();

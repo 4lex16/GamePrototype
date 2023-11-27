@@ -11,7 +11,7 @@ public class LevelTwo extends World
     
     public GreenfootSound gfs_levelTwo_world;
 
-    private int timer = 11;
+    private int timer = 61;
     /**
      * Constructor for objects of class LevelTwo.
      * 
