@@ -4,7 +4,7 @@ public class LevelThree extends World
 {
     private int spawn_duration = 250;
     private int spawn_cap = 10;
-    private int timer = 11;
+    private int timer = 31;
     private static int WW = 1600;
     private static int WH = 900;
     public GreenfootSound gfs_levelThree_world;

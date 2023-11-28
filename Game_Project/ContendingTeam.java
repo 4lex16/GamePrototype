@@ -13,7 +13,7 @@ public class ContendingTeam extends Ennemy
     {
             if (constructed == false)
         {
-            setStats(1, 3, 300);
+            setStats(3, 6, 300);
             constructed = true;
         }
         collision();

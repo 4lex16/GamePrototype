@@ -13,7 +13,7 @@ public class Fan extends Ennemy
     {
         if (constructed == false)
         {
-            setStats(1, 3, 300);
+            setStats(1, 1, 300);
             constructed = true;
         }
         collision();
