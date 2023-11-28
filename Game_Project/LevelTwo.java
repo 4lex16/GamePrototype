@@ -11,7 +11,7 @@ public class LevelTwo extends World
     
     public GreenfootSound gfs_levelTwo_world;
 
-    private int timer = 11;
+    private int timer = 31;
     /**
      * Constructor for objects of class LevelTwo.
      * 
@@ -46,7 +46,7 @@ public class LevelTwo extends World
         while (spawn_num < spawn_cap && spawn_duration <= 0)
         {
             Coach coach = new Coach();
-            Media media = new Media();
+            Rookies rookies = new Rookies();
             int randomNum = Greenfoot.getRandomNumber(4);
             if (randomNum == 0)
             {
@@ -57,7 +57,7 @@ public class LevelTwo extends World
                 }
                 if (randomNum == 1)
                 {
-                    addObject(media,Greenfoot.getRandomNumber(WW), 0);
+                    addObject(rookies,Greenfoot.getRandomNumber(WW), 0);
                 }
             }
             if (randomNum == 1)
@@ -69,7 +69,7 @@ public class LevelTwo extends World
                 }
                 if (randomNum == 1)
                 {
-                    addObject(media,0, Greenfoot.getRandomNumber(WH));
+                    addObject(rookies,0, Greenfoot.getRandomNumber(WH));
                 }
             }
             if (randomNum == 2)
@@ -81,7 +81,7 @@ public class LevelTwo extends World
                 }
                 if (randomNum == 1)
                 {
-                    addObject(media,Greenfoot.getRandomNumber(WW), WH);
+                    addObject(rookies,Greenfoot.getRandomNumber(WW), WH);
                 }
             }
             if (randomNum == 3)
@@ -93,7 +93,7 @@ public class LevelTwo extends World
                 }
                 if (randomNum == 1)
                 {
-                    addObject(media,WW, Greenfoot.getRandomNumber(WH));
+                    addObject(rookies,WW, Greenfoot.getRandomNumber(WH));
                 }
             }
             spawn_duration = 200;
