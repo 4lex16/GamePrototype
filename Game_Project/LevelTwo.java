@@ -11,7 +11,7 @@ public class LevelTwo extends World
     
     public GreenfootSound gfs_levelTwo_world;
 
-    private int timer = 61;
+    private int timer = 11;
     /**
      * Constructor for objects of class LevelTwo.
      * 
@@ -45,7 +45,7 @@ public class LevelTwo extends World
         int spawn_num = this.getObjects(Ennemy.class).size();
         while (spawn_num < spawn_cap && spawn_duration <= 0)
         {
-            Fan fan = new Fan();
+            Coach coach = new Coach();
             Media media = new Media();
             int randomNum = Greenfoot.getRandomNumber(4);
             if (randomNum == 0)
@@ -53,7 +53,7 @@ public class LevelTwo extends World
                 randomNum = Greenfoot.getRandomNumber(2);
                 if (randomNum == 0)
                 {
-                    addObject(fan,Greenfoot.getRandomNumber(WW), 0);
+                    addObject(coach,Greenfoot.getRandomNumber(WW), 0);
                 }
                 if (randomNum == 1)
                 {
@@ -65,7 +65,7 @@ public class LevelTwo extends World
                 randomNum = Greenfoot.getRandomNumber(2);
                 if (randomNum == 0)
                 {
-                    addObject(fan,0, Greenfoot.getRandomNumber(WH));
+                    addObject(coach,0, Greenfoot.getRandomNumber(WH));
                 }
                 if (randomNum == 1)
                 {
@@ -77,7 +77,7 @@ public class LevelTwo extends World
                 randomNum = Greenfoot.getRandomNumber(2);
                 if (randomNum == 0)
                 {
-                    addObject(fan,Greenfoot.getRandomNumber(WW), WH);
+                    addObject(coach,Greenfoot.getRandomNumber(WW), WH);
                 }
                 if (randomNum == 1)
                 {
@@ -89,7 +89,7 @@ public class LevelTwo extends World
                 randomNum = Greenfoot.getRandomNumber(2);
                 if (randomNum == 0)
                 {
-                    addObject(fan,WW, Greenfoot.getRandomNumber(WH));
+                    addObject(coach,WW, Greenfoot.getRandomNumber(WH));
                 }
                 if (randomNum == 1)
                 {

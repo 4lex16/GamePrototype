@@ -4,7 +4,7 @@ public class LevelThree extends World
 {
     private int spawn_duration = 250;
     private int spawn_cap = 10;
-    private int timer = 61;
+    private int timer = 11;
     private static int WW = 1600;
     private static int WH = 900;
     public GreenfootSound gfs_levelThree_world;
@@ -57,7 +57,7 @@ public class LevelThree extends World
         while (spawn_num < spawn_cap && spawn_duration <= 0)
         {
             Fan fan = new Fan();
-            Media media = new Media();
+            ContendingTeam contendingTeam = new ContendingTeam();
             int randomNum = Greenfoot.getRandomNumber(4);
             if (randomNum == 0)
             {
@@ -68,7 +68,7 @@ public class LevelThree extends World
                 }
                 if (randomNum == 1)
                 {
-                    addObject(media,Greenfoot.getRandomNumber(WW), 0);
+                    addObject(contendingTeam,Greenfoot.getRandomNumber(WW), 0);
                 }
             }
             if (randomNum == 1)
@@ -80,7 +80,7 @@ public class LevelThree extends World
                 }
                 if (randomNum == 1)
                 {
-                    addObject(media,0, Greenfoot.getRandomNumber(WH));
+                    addObject(contendingTeam,0, Greenfoot.getRandomNumber(WH));
                 }
             }
             if (randomNum == 2)
@@ -92,7 +92,7 @@ public class LevelThree extends World
                 }
                 if (randomNum == 1)
                 {
-                    addObject(media,Greenfoot.getRandomNumber(WW), WH);
+                    addObject(contendingTeam,Greenfoot.getRandomNumber(WW), WH);
                 }
             }
             if (randomNum == 3)
@@ -104,7 +104,7 @@ public class LevelThree extends World
                 }
                 if (randomNum == 1)
                 {
-                    addObject(media,WW, Greenfoot.getRandomNumber(WH));
+                    addObject(contendingTeam,WW, Greenfoot.getRandomNumber(WH));
                 }
             }
             spawn_duration = 200;

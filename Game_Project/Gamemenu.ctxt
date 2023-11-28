@@ -8,4 +8,6 @@ comment3.params=
 comment3.target=void\ started()
 comment4.params=
 comment4.target=void\ stopped()
-numComments=5
+comment5.params=message\ x\ y
+comment5.target=void\ showTextWithBlackFont(java.lang.String,\ int,\ int)
+numComments=6
