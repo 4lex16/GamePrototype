@@ -8,7 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class YouLostWorld extends World
 {
-    
+    public GreenfootSound gfs_YouLost_world;
     /**
      * Constructor for objects of class YouLostWorld.
      * 
@@ -18,7 +18,7 @@ public class YouLostWorld extends World
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(1600, 900, 1); 
         showTextWithBigWhiteFont("You Lost", 550,450);
-        
+        gfs_YouLost_world = new GreenfootSound("prologue.wav");
         prepare();
         
     }
@@ -43,5 +43,13 @@ public class YouLostWorld extends World
         exitGame.setLocation(1492,861);
     }
     
+    public void started(){
+        gfs_YouLost_world.playLoop();
+    
+    }
+    
+    public void stopped(){
+        gfs_YouLost_world.stop();
+    }
 }
 

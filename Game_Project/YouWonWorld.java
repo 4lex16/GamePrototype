@@ -8,7 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class YouWonWorld extends World
 {
-    
+    public GreenfootSound gfs_YouWon_world;
 
     /**
      * Constructor for objects of class YouWonWorld.
@@ -19,6 +19,7 @@ public class YouWonWorld extends World
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(1600, 900, 1); 
         showTextWithBigWhiteFont("YOU ARE THE WINNER", 250,450);
+        gfs_YouWon_world = new GreenfootSound("Ending.wav");
         prepare();
     }
 
@@ -39,5 +40,15 @@ public class YouWonWorld extends World
         ExitGame exitGame = new ExitGame();
         addObject(exitGame,1499,821);
         exitGame.setLocation(1488,859);
+    }
+    
+    public void started(){
+        gfs_YouWon_world.playLoop();
+    
+    }
+    
+    public void stopped(){
+        gfs_YouWon_world.stop();
+    
     }
 }
