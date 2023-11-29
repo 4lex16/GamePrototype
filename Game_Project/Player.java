@@ -14,6 +14,7 @@ public class Player extends Actor
     private boolean gainHealth = false;
     private boolean fasterMovementSpeed = false;
     private boolean longerInvincibility = false;
+    
     private boolean splitPuck = false;
     private boolean fasterPuck = false;
     private boolean biggerPuck = false;
@@ -31,7 +32,6 @@ public class Player extends Actor
     public boolean getPierceEnnemy() {return this.pierceEnnemy;}
     public boolean getMultiplePuck() {return this.multiplePuck;}
     public boolean getLongerLastingPuck() {return this.longerLastingPuck;}
-    
     
     private String playerDirection = "characterR.png";
     
@@ -53,6 +53,7 @@ public class Player extends Actor
         this.multiplePuck = multiplePuck;
         this.longerLastingPuck = longerLastingPuck;
     }
+
     public void act()
     {
         aim();
@@ -127,11 +128,11 @@ public class Player extends Actor
     {
         if ((Greenfoot.mouseClicked(null) || Greenfoot.isKeyDown("space")))
         {
-            movement_speed = 1;
+            movement_speed = this.fasterMovementSpeed ? 1 : 2;
         }
         else
         {
-            movement_speed = 3;
+            movement_speed = this.fasterMovementSpeed ? 3 : 4;
         }
         if (Greenfoot.isKeyDown("w"))
         {
