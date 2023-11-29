@@ -4,34 +4,39 @@ public class LevelTwo extends World
 {
     private static int WW = 1600;
     private static int WH = 900;
-    private int spawn_duration = 250;
+    private int spawn_duration = 100;
     private int spawn_cap = 10;
+    // Sound
+    public GreenfootSound gfs_levelTwo_world;
+    // Timer
     SimpleTimer tim = new SimpleTimer();
     Counter timeCount =new Counter();
+    private int timer = 60;
     
-    public GreenfootSound gfs_levelTwo_world;
-
-    private int timer = 31;
-    /**
-     * Constructor for objects of class LevelTwo.
-     * 
-     */
-    public LevelTwo(int playerHealth)
-    {    
-        // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
+    public LevelTwo(
+        int playerHealth, 
+        boolean gainHealth, boolean fasterMovementSpeed, boolean longerInvincibility,
+        boolean splitPuck, boolean fasterPuck, boolean biggerPuck,
+        boolean pierceEnnemy, boolean multiplePuck, boolean longerLastingPuck)
+    {
         super(WW, WH, 1);
-        prepare(playerHealth);
-        //addObject(timeCount,950 , 50); 
-        //timeCount.setValue(60);
-        //act();
+        setPaintOrder(Player.class, Puck.class);
+        prepare(playerHealth, gainHealth, fasterMovementSpeed, longerInvincibility, splitPuck, fasterPuck, biggerPuck, pierceEnnemy, multiplePuck, longerLastingPuck);
         gfs_levelTwo_world = new GreenfootSound("Boss Battle #5 V2.wav");
         
     }
     
-    private void prepare(int playerHealth)
+    private void prepare(
+        int playerHealth,
+        boolean gainHealth, boolean fasterMovementSpeed, boolean longerInvincibility,
+        boolean splitPuck, boolean fasterPuck, boolean biggerPuck,
+        boolean pierceEnnemy, boolean multiplePuck, boolean longerLastingPuck)
     {
-        Player player = new Player();
-        player.setHealth(playerHealth);
+        Player player = new Player(
+            playerHealth, gainHealth, fasterMovementSpeed,
+            longerInvincibility, splitPuck, fasterPuck,
+            biggerPuck, pierceEnnemy, multiplePuck, longerLastingPuck
+        );
         addObject(player,(WW/2),(WH/2)); 
         ExitGame exitGame = new ExitGame();
         addObject(exitGame,1490,860);
@@ -40,6 +45,76 @@ public class LevelTwo extends World
         exitGame.setLocation(1488,857);
     }
 
+    
+    public void act()
+    {
+        if(tim.millisElapsed() > 1000)
+        {
+            timeCount.add(-1);
+            tim.mark();
+            timer--;
+            showText("Time left: "+ timer, 830,50);
+            if(timer <= 0)
+            {
+                transitionToUM();
+            }    
+        }
+        if (isGameLost())
+        {
+            transitionToYouLostWorld();
+        }
+        spawn();
+    }
+    public boolean isGameLost()
+    {
+        if(this.getObjects(Player.class).isEmpty())
+        {
+            return true;
+        }
+        else
+        {    
+            return false;
+        } 
+    }
+    
+    public void transitionToYouLostWorld()
+    {
+        this.stopped();
+        World YouLostWorld = new YouLostWorld();
+        YouLostWorld.started();
+        Greenfoot.setWorld(YouLostWorld);
+    }
+    
+    public void transitionToUM()
+    {
+        World UM = new UpgradeMenu(
+        this.getObjects(Player.class).get(0).getHealth(),
+        "levelThree",
+        this.getObjects(Player.class).get(0).getGainHealth(),
+        this.getObjects(Player.class).get(0).getFasterMovementSpeed(),
+        this.getObjects(Player.class).get(0).getLongerInvincibility(),
+        this.getObjects(Player.class).get(0).getSplitPuck(),
+        this.getObjects(Player.class).get(0).getFasterPuck(),
+        this.getObjects(Player.class).get(0).getBiggerPuck(),
+        this.getObjects(Player.class).get(0).getPierceEnnemy(),
+        this.getObjects(Player.class).get(0).getMultiplePuck(),
+        this.getObjects(Player.class).get(0).getLongerLastingPuck()
+        );
+        this.stopped();
+        UM.started();
+        Greenfoot.setWorld(UM);
+    }
+
+    
+    public void started(){
+        gfs_levelTwo_world.playLoop();
+        
+    }
+    
+    public void stopped(){
+        gfs_levelTwo_world.stop();
+    }
+    
     public void spawn()
     {
         int spawn_num = this.getObjects(Ennemy.class).size();
@@ -100,56 +175,5 @@ public class LevelTwo extends World
             spawn_num = this.getObjects(Ennemy.class).size();
         }
         spawn_duration -= 1;
-    }
-    public void act()
-    {
-        if(tim.millisElapsed() > 1000)
-        {
-            timeCount.add(-1);
-            tim.mark();
-            timer--;
-            showText("Time left: "+ timer, 830,50);
-            if(timer <= 0)
-            {
-                World levelTwo = this;
-                World levelThree = new LevelThree(this.getObjects(Player.class).get(0).getHealth());
-                levelTwo.stopped();
-                levelThree.started();
-                Greenfoot.setWorld (levelThree);
-            }    
-        }
-        spawn();
-        if (isGameLost())
-        {
-            transitionToYouLostWorld();
-        }
-    }
-    public boolean isGameLost()
-    {
-        if(this.getObjects(Player.class).isEmpty())
-        {
-            return true;
-        }
-        else
-        {    
-            return false;
-        } 
-    }
-    
-    public void transitionToYouLostWorld()
-    {
-        this.stopped();
-        World YouLostWorld = new YouLostWorld();
-        YouLostWorld.started();
-        Greenfoot.setWorld(YouLostWorld);
-    }
-    
-    public void started(){
-        gfs_levelTwo_world.playLoop();
-        
-    }
-    
-    public void stopped(){
-        gfs_levelTwo_world.stop();
     }
 }

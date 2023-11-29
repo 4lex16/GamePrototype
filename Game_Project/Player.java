@@ -10,8 +10,49 @@ public class Player extends Actor
     private int invincibilityFramesDuration = 50;
     private static ArrayList<Heart> hearts = new ArrayList<Heart>();
     
+    // Booleans for Upgrades
+    private boolean gainHealth = false;
+    private boolean fasterMovementSpeed = false;
+    private boolean longerInvincibility = false;
+    private boolean splitPuck = false;
+    private boolean fasterPuck = false;
+    private boolean biggerPuck = false;
+    private boolean pierceEnnemy = false;
+    private boolean multiplePuck = false;
+    private boolean longerLastingPuck = false;
+    
+    
+    public boolean getGainHealth() {return this.gainHealth;}
+    public boolean getFasterMovementSpeed() {return this.fasterMovementSpeed;}
+    public boolean getLongerInvincibility() {return this.longerInvincibility;}
+    public boolean getSplitPuck() {return this.splitPuck;}
+    public boolean getFasterPuck() {return this.fasterPuck;}
+    public boolean getBiggerPuck() {return this.biggerPuck;}
+    public boolean getPierceEnnemy() {return this.pierceEnnemy;}
+    public boolean getMultiplePuck() {return this.multiplePuck;}
+    public boolean getLongerLastingPuck() {return this.longerLastingPuck;}
+    
+    
     private String playerDirection = "characterR.png";
     
+    public Player(
+        int health,
+        boolean gainHealth, boolean fasterMovementSpeed, boolean longerInvincibility,
+        boolean splitPuck, boolean fasterPuck, boolean biggerPuck,
+        boolean pierceEnnemy, boolean multiplePuck, boolean longerLastingPuck
+    )
+    {
+        this.health = health;
+        this.gainHealth = gainHealth;
+        this.fasterMovementSpeed = fasterMovementSpeed;
+        this.longerInvincibility = longerInvincibility;
+        this.splitPuck = splitPuck;
+        this.fasterPuck = fasterPuck;
+        this.biggerPuck = biggerPuck;
+        this.pierceEnnemy = pierceEnnemy;
+        this.multiplePuck = multiplePuck;
+        this.longerLastingPuck = longerLastingPuck;
+    }
     public void act()
     {
         aim();

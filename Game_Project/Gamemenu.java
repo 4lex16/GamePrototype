@@ -10,7 +10,6 @@ public class Gamemenu extends World
     {    
         super(WW, WH, 1); 
         prepare();
-        showTextWithBlackFont("Alexandru Cirlan \nMassimo Prioriello", 100, 200);
         gfs_MainMenu_World = new GreenfootSound("boss_battle_#2_metal_loop.wav");
     }
     
@@ -38,6 +37,8 @@ public class Gamemenu extends World
         addObject(vanierCollege,165,65);
         vanierCollege.setLocation(181,112);
         vanierCollege.setLocation(222,85);
+        
+        showTextWithBlackFont("Alexandru Cirlan \nMassimo Prioriello", 100, 200);
     }
     
     public void started(){

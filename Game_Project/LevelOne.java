@@ -6,19 +6,16 @@ public class LevelOne extends World
     private static int WH = 900;
     private int spawn_duration = 100;
     private int spawn_cap = 10;
-    private int timer = 11;
-    
-    
+    // Sound
+    public GreenfootSound gfs_levelOne_world;
+    // Timer
     SimpleTimer tim = new SimpleTimer();
     Counter timeCount =new Counter();
-    int end = 0;
-    private boolean timerEnded;
-    public GreenfootSound gfs_levelOne_world;
+    private int timer = 60;
     
     public LevelOne()
     {
         super(WW, WH, 1);
-        //act();
         prepare();
         setPaintOrder(Player.class, Puck.class);
         gfs_levelOne_world = new GreenfootSound("boss_battle_8_retro_01_loop.wav");
@@ -26,11 +23,12 @@ public class LevelOne extends World
     }
     private void prepare()
     {
-        Player player = new Player();
+        Player player = new Player(3, false, false, false, false, false, false, false, false, false);
         addObject(player,(WW/2),(WH/2));
         ExitGame exitGame2 = new ExitGame();
         addObject(exitGame2,1509,878);
         exitGame2.setLocation(1500,866);
+        showText("Time left: "+ 60, 830,50);
     }
     public void act()
     {
@@ -42,21 +40,14 @@ public class LevelOne extends World
             showText("Time left: "+ timer, 830,50);
             if(timer <= 0)
             {
-                World levelOne = this;
-                levelOne.stopped();
-                World LevelTwo = new LevelTwo(2);
-                LevelTwo.started();
-                Greenfoot.setWorld (LevelTwo);
+                transitionToUM();
             }
-        }
-        if (!timerEnded)
-        {
-            spawn();
         }
         if (isGameLost())
         {
             transitionToYouLostWorld();
         }
+        spawn();
     
     }
     public boolean isGameLost()
@@ -80,16 +71,24 @@ public class LevelOne extends World
     }
     
     
-    public void transitionToLevelTwo()
+    public void transitionToUM()
     {
-        if (this.getObjects(Ennemy.class).size() - 1 <= 0)
-        {
-            World levelOne = this;
-            World levelTwo = new LevelTwo(this.getObjects(Player.class).get(0).getHealth());
-            levelOne.stopped();
-            levelTwo.started();
-            Greenfoot.setWorld(levelTwo);
-        }
+        World UM = new UpgradeMenu(
+        this.getObjects(Player.class).get(0).getHealth(),
+        "levelTwo",
+        this.getObjects(Player.class).get(0).getGainHealth(),
+        this.getObjects(Player.class).get(0).getFasterMovementSpeed(),
+        this.getObjects(Player.class).get(0).getLongerInvincibility(),
+        this.getObjects(Player.class).get(0).getSplitPuck(),
+        this.getObjects(Player.class).get(0).getFasterPuck(),
+        this.getObjects(Player.class).get(0).getBiggerPuck(),
+        this.getObjects(Player.class).get(0).getPierceEnnemy(),
+        this.getObjects(Player.class).get(0).getMultiplePuck(),
+        this.getObjects(Player.class).get(0).getLongerLastingPuck()
+        );
+        this.stopped();
+        UM.started();
+        Greenfoot.setWorld(UM);
     }
     
     public void spawn()
@@ -148,7 +147,7 @@ public class LevelOne extends World
                     addObject(media,WW, Greenfoot.getRandomNumber(WH));
                 }
             }
-            spawn_duration = 200;
+            spawn_duration = Greenfoot.getRandomNumber(100) + 100;
             spawn_num = this.getObjects(Ennemy.class).size();
         }
         spawn_duration -= 1;
