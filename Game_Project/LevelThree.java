@@ -17,22 +17,28 @@ public class LevelThree extends World
         int playerHealth, 
         boolean gainHealth, boolean fasterMovementSpeed, boolean longerInvincibility,
         boolean splitPuck, boolean fasterPuck, boolean biggerPuck,
-        boolean pierceEnnemy, boolean multiplePuck, boolean longerLastingPuck)
+        boolean pierceEnnemy, boolean multiplePuck, boolean longerLastingPuck,
+        boolean fasterShooting)
     {
         super(WW, WH, 1);
         gfs_levelThree_world = new GreenfootSound("Boss Battle #2 V2.wav");
-        prepare(playerHealth, gainHealth, fasterMovementSpeed, longerInvincibility, splitPuck, fasterPuck, biggerPuck, pierceEnnemy, multiplePuck, longerLastingPuck);
+        prepare(playerHealth, gainHealth, fasterMovementSpeed,
+        longerInvincibility, splitPuck, fasterPuck,
+        biggerPuck, pierceEnnemy, multiplePuck, longerLastingPuck,
+        fasterShooting);
     }
     private void prepare(
         int playerHealth,
         boolean gainHealth, boolean fasterMovementSpeed, boolean longerInvincibility,
         boolean splitPuck, boolean fasterPuck, boolean biggerPuck,
-        boolean pierceEnnemy, boolean multiplePuck, boolean longerLastingPuck)
+        boolean pierceEnnemy, boolean multiplePuck, boolean longerLastingPuck,
+        boolean fasterShooting)
     {
         Player player = new Player(
             playerHealth, gainHealth, fasterMovementSpeed,
             longerInvincibility, splitPuck, fasterPuck,
-            biggerPuck, pierceEnnemy, multiplePuck, longerLastingPuck
+            biggerPuck, pierceEnnemy, multiplePuck, longerLastingPuck,
+            fasterShooting
         );
         addObject(player,1327,463);
         ExitGame exitGame = new ExitGame();

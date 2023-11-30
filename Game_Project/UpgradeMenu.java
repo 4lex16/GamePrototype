@@ -5,9 +5,9 @@ public class UpgradeMenu extends World
 
     private static int WW = 1600;
     private static int WH = 900;
-    private int playerHealth = 3;
-    private String nextLevel = "levelTwo";
     
+    private int playerHealth;
+    private String nextLevel;
     private boolean gainHealth = false;
     private boolean fasterMovementSpeed = false;
     private boolean longerInvincibility = false;
@@ -17,19 +17,30 @@ public class UpgradeMenu extends World
     private boolean pierceEnnemy = false;
     private boolean multiplePuck = false;
     private boolean longerLastingPuck = false;
+    private boolean fasterShooting = false;
     
     public UpgradeMenu(
             int playerHealth, String nextLevel,
             boolean gainHealth, boolean fasterMovementSpeed, boolean longerInvincibility,
             boolean splitPuck, boolean fasterPuck, boolean biggerPuck,
-            boolean pierceEnnemy, boolean multiplePuck, boolean longerLastingPuck
+            boolean pierceEnnemy, boolean multiplePuck, boolean longerLastingPuck,
+            boolean fasterShooting
     )
-    {    
-        // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
+    {
         super(WW, WH, 1);
         prepare();
         this.playerHealth = playerHealth;
         this.nextLevel = nextLevel;
+        this.gainHealth = gainHealth;
+        this.fasterMovementSpeed = fasterMovementSpeed;
+        this.longerInvincibility = longerInvincibility;
+        this.splitPuck = splitPuck;
+        this.fasterPuck = fasterPuck;
+        this.biggerPuck = biggerPuck;
+        this.pierceEnnemy = pierceEnnemy;
+        this.multiplePuck = multiplePuck;
+        this.longerLastingPuck = longerLastingPuck;
+        this.fasterShooting = fasterShooting;
     }
     private void prepare()
     {
@@ -50,7 +61,8 @@ public class UpgradeMenu extends World
             this.biggerPuck,
             this.pierceEnnemy,
             this.multiplePuck,
-            this.longerLastingPuck
+            this.longerLastingPuck,
+            this.fasterShooting
         );
             this.stopped();
             levelTwo.started();
@@ -68,7 +80,8 @@ public class UpgradeMenu extends World
             this.biggerPuck,
             this.pierceEnnemy,
             this.multiplePuck,
-            this.longerLastingPuck
+            this.longerLastingPuck,
+            this.fasterShooting
         );
             this.stopped();
             levelThree.started();

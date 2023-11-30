@@ -1,7 +1,7 @@
 #BlueJ class context
 comment0.target=UpgradeMenu
-comment1.params=playerHealth\ nextLevel\ gainHealth\ fasterMovementSpeed\ longerInvincibility\ splitPuck\ fasterPuck\ biggerPuck\ pierceEnnemy\ multiplePuck\ longerLastingPuck
-comment1.target=UpgradeMenu(int,\ java.lang.String,\ boolean,\ boolean,\ boolean,\ boolean,\ boolean,\ boolean,\ boolean,\ boolean,\ boolean)
+comment1.params=playerHealth\ nextLevel\ gainHealth\ fasterMovementSpeed\ longerInvincibility\ splitPuck\ fasterPuck\ biggerPuck\ pierceEnnemy\ multiplePuck\ longerLastingPuck\ fasterShooting
+comment1.target=UpgradeMenu(int,\ java.lang.String,\ boolean,\ boolean,\ boolean,\ boolean,\ boolean,\ boolean,\ boolean,\ boolean,\ boolean,\ boolean)
 comment2.params=
 comment2.target=void\ prepare()
 comment3.params=

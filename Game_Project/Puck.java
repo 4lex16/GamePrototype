@@ -24,4 +24,25 @@ public class Puck extends Actor
             getWorld().removeObject(this);
         }
     }
+    public void splitPuck()
+    {
+    
+    }
+    public void fasterPuck()
+    {
+    
+    }
+    public void biggerPuck()
+    {
+        
+    }
+    public void pierceEnnemy()
+    {
+        
+    }
+    public void longerLastingPuck()
+    {
+        
+    }
+    
 }

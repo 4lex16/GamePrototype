@@ -14,14 +14,15 @@ public class LevelTwo extends World
     private int timer = 60;
     
     public LevelTwo(
-        int playerHealth, 
+        int playerHealth,
         boolean gainHealth, boolean fasterMovementSpeed, boolean longerInvincibility,
         boolean splitPuck, boolean fasterPuck, boolean biggerPuck,
-        boolean pierceEnnemy, boolean multiplePuck, boolean longerLastingPuck)
+        boolean pierceEnnemy, boolean multiplePuck, boolean longerLastingPuck,
+        boolean fasterShooting)
     {
         super(WW, WH, 1);
         setPaintOrder(Player.class, Puck.class);
-        prepare(playerHealth, gainHealth, fasterMovementSpeed, longerInvincibility, splitPuck, fasterPuck, biggerPuck, pierceEnnemy, multiplePuck, longerLastingPuck);
+        prepare(playerHealth, gainHealth, fasterMovementSpeed, longerInvincibility, splitPuck, fasterPuck, biggerPuck, pierceEnnemy, multiplePuck, longerLastingPuck, fasterShooting);
         gfs_levelTwo_world = new GreenfootSound("Boss Battle #5 V2.wav");
         
     }
@@ -30,12 +31,14 @@ public class LevelTwo extends World
         int playerHealth,
         boolean gainHealth, boolean fasterMovementSpeed, boolean longerInvincibility,
         boolean splitPuck, boolean fasterPuck, boolean biggerPuck,
-        boolean pierceEnnemy, boolean multiplePuck, boolean longerLastingPuck)
+        boolean pierceEnnemy, boolean multiplePuck, boolean longerLastingPuck,
+        boolean fasterShooting)
     {
         Player player = new Player(
             playerHealth, gainHealth, fasterMovementSpeed,
             longerInvincibility, splitPuck, fasterPuck,
-            biggerPuck, pierceEnnemy, multiplePuck, longerLastingPuck
+            biggerPuck, pierceEnnemy, multiplePuck, longerLastingPuck,
+            fasterShooting
         );
         addObject(player,(WW/2),(WH/2)); 
         ExitGame exitGame = new ExitGame();
@@ -98,7 +101,8 @@ public class LevelTwo extends World
         this.getObjects(Player.class).get(0).getBiggerPuck(),
         this.getObjects(Player.class).get(0).getPierceEnnemy(),
         this.getObjects(Player.class).get(0).getMultiplePuck(),
-        this.getObjects(Player.class).get(0).getLongerLastingPuck()
+        this.getObjects(Player.class).get(0).getLongerLastingPuck(),
+        this.getObjects(Player.class).get(0).getFasterShooting()
         );
         this.stopped();
         UM.started();

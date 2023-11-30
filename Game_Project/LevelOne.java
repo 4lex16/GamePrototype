@@ -23,7 +23,7 @@ public class LevelOne extends World
     }
     private void prepare()
     {
-        Player player = new Player(3, false, false, false, false, false, false, false, false, false);
+        Player player = new Player();
         addObject(player,(WW/2),(WH/2));
         ExitGame exitGame2 = new ExitGame();
         addObject(exitGame2,1509,878);
@@ -84,7 +84,8 @@ public class LevelOne extends World
         this.getObjects(Player.class).get(0).getBiggerPuck(),
         this.getObjects(Player.class).get(0).getPierceEnnemy(),
         this.getObjects(Player.class).get(0).getMultiplePuck(),
-        this.getObjects(Player.class).get(0).getLongerLastingPuck()
+        this.getObjects(Player.class).get(0).getLongerLastingPuck(),
+        this.getObjects(Player.class).get(0).getFasterShooting()
         );
         this.stopped();
         UM.started();

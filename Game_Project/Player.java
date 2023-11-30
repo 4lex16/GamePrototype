@@ -5,22 +5,24 @@ public class Player extends Actor
     private int fire_delay = 0;
     private boolean shooting;
     private int movement_speed;
-    private int health = 3;
+    private int maxHealth = 3;
+    private int health;
     private int invincibilityFrames = 0;
     private int invincibilityFramesDuration = 50;
     private static ArrayList<Heart> hearts = new ArrayList<Heart>();
     
     // Booleans for Upgrades
-    private boolean gainHealth = false;
-    private boolean fasterMovementSpeed = false;
-    private boolean longerInvincibility = false;
+    private boolean gainHealth;
+    private boolean fasterMovementSpeed;
+    private boolean longerInvincibility;
+    private boolean multiplePuck;
+    private boolean biggerPuck;
+    private boolean fasterShooting;
     
-    private boolean splitPuck = false;
-    private boolean fasterPuck = false;
-    private boolean biggerPuck = false;
-    private boolean pierceEnnemy = false;
-    private boolean multiplePuck = false;
-    private boolean longerLastingPuck = false;
+    private boolean splitPuck;
+    private boolean fasterPuck;
+    private boolean pierceEnnemy;
+    private boolean longerLastingPuck;
     
     
     public boolean getGainHealth() {return this.gainHealth;}
@@ -32,6 +34,7 @@ public class Player extends Actor
     public boolean getPierceEnnemy() {return this.pierceEnnemy;}
     public boolean getMultiplePuck() {return this.multiplePuck;}
     public boolean getLongerLastingPuck() {return this.longerLastingPuck;}
+    public boolean getFasterShooting() {return this.fasterShooting;}
     
     private String playerDirection = "characterR.png";
     
@@ -39,7 +42,8 @@ public class Player extends Actor
         int health,
         boolean gainHealth, boolean fasterMovementSpeed, boolean longerInvincibility,
         boolean splitPuck, boolean fasterPuck, boolean biggerPuck,
-        boolean pierceEnnemy, boolean multiplePuck, boolean longerLastingPuck
+        boolean pierceEnnemy, boolean multiplePuck, boolean longerLastingPuck,
+        boolean fasterShooting
     )
     {
         this.health = health;
@@ -52,10 +56,25 @@ public class Player extends Actor
         this.pierceEnnemy = pierceEnnemy;
         this.multiplePuck = multiplePuck;
         this.longerLastingPuck = longerLastingPuck;
+        this.fasterShooting = fasterShooting;
     }
-
+    public Player()
+    {
+        this.health = maxHealth;
+        this.gainHealth = false;
+        this.fasterMovementSpeed = false;
+        this.longerInvincibility = false;
+        this.splitPuck = false;
+        this.fasterPuck = false;
+        this.biggerPuck = false;
+        this.pierceEnnemy = false;
+        this.multiplePuck = false;
+        this.longerLastingPuck = false;
+        this.fasterShooting = false;
+    }
     public void act()
     {
+        methodgainHealth();
         aim();
         movement();
         setNormal();
@@ -85,7 +104,7 @@ public class Player extends Actor
     {
         if (invincibilityFramesDuration < 0) 
         {
-            invincibilityFramesDuration = 50;
+            invincibilityFramesDuration = longerInvincibility ? 50 : 100;
             this.setImage("Gray_Circle.png");
         }     
     }
@@ -95,7 +114,6 @@ public class Player extends Actor
         {
             transparency();
             this.health -=1;
-            //hearts.remove(hearts.size() - 1);
             invincibilityFrames = 50;
         }
     }
@@ -112,10 +130,23 @@ public class Player extends Actor
                 double angleRadians = Math.atan2(opposite, adjacent);
                 double angleDegrees = Math.toDegrees(angleRadians);
                 
-                Actor puck = new Puck();
-                getWorld().addObject(puck, getX(), getY());
-                puck.setRotation((int) angleDegrees);
-                fire_delay = 50;
+                if(this.multiplePuck)
+                {
+                    Actor puck1 = new Puck();
+                    Actor puck2 = new Puck();
+                    getWorld().addObject(puck1, getX(), getY());
+                    getWorld().addObject(puck2, getX(), getY());
+                    puck1.setRotation((int) angleDegrees + Greenfoot.getRandomNumber(15));
+                    puck2.setRotation((int) angleDegrees - Greenfoot.getRandomNumber(15));
+                    fire_delay = 50;
+                }
+                else
+                {
+                    Actor puck = new Puck();
+                    getWorld().addObject(puck, getX(), getY());
+                    puck.setRotation((int) angleDegrees);
+                    fire_delay = 50;
+                }   
             }
             else
             {
@@ -161,6 +192,15 @@ public class Player extends Actor
             Heart heart = new Heart();
             hearts.add(heart);
             getWorld().addObject(heart, (100 + (60*i)), 50);
+        }
+    }
+    public void methodgainHealth()
+    {
+        if(this.gainHealth)
+        {
+            this.maxHealth += 1;
+            this.health += 1;
+            gainHealth = false;
         }
     }
 }
