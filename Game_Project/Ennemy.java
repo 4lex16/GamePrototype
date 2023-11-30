@@ -29,6 +29,15 @@ public class Ennemy extends Actor
                 getWorld().removeObject(this);
             }
         }
+        if (isTouching(PuckShard.class))
+        {
+            health -= 1;
+            getWorld().removeObject(getOneIntersectingObject(PuckShard.class));
+            if (health == 0)
+            {
+                getWorld().removeObject(this);
+            }
+        }
     }
     public void goTowardsPlayer()
     {

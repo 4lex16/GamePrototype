@@ -1,17 +1,15 @@
 #BlueJ class context
 comment0.target=Puck
-comment1.params=
-comment1.target=void\ act()
+comment1.params=splitPuck\ fasterPuck\ pierceEnnemy\ longerLastingPuck
+comment1.target=Puck(boolean,\ boolean,\ boolean,\ boolean)
 comment2.params=
-comment2.target=void\ puckDuration()
+comment2.target=void\ act()
 comment3.params=
-comment3.target=void\ splitPuck()
+comment3.target=void\ puckDuration()
 comment4.params=
-comment4.target=void\ fasterPuck()
+comment4.target=void\ splitPuck()
 comment5.params=
 comment5.target=void\ biggerPuck()
 comment6.params=
 comment6.target=void\ pierceEnnemy()
-comment7.params=
-comment7.target=void\ longerLastingPuck()
-numComments=8
+numComments=7

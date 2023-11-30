@@ -18,7 +18,6 @@ public class Player extends Actor
     private boolean multiplePuck;
     private boolean biggerPuck;
     private boolean fasterShooting;
-    
     private boolean splitPuck;
     private boolean fasterPuck;
     private boolean pierceEnnemy;
@@ -64,7 +63,7 @@ public class Player extends Actor
         this.gainHealth = false;
         this.fasterMovementSpeed = false;
         this.longerInvincibility = false;
-        this.splitPuck = false;
+        this.splitPuck = true;
         this.fasterPuck = false;
         this.biggerPuck = false;
         this.pierceEnnemy = false;
@@ -104,7 +103,7 @@ public class Player extends Actor
     {
         if (invincibilityFramesDuration < 0) 
         {
-            invincibilityFramesDuration = longerInvincibility ? 50 : 100;
+            invincibilityFramesDuration = longerInvincibility ? 100 : 50;
             this.setImage("Gray_Circle.png");
         }     
     }
@@ -132,20 +131,29 @@ public class Player extends Actor
                 
                 if(this.multiplePuck)
                 {
-                    Actor puck1 = new Puck();
-                    Actor puck2 = new Puck();
+                    Puck puck1 = new Puck(this.splitPuck, this.fasterPuck, this.pierceEnnemy, this.longerLastingPuck);
+                    Puck puck2 = new Puck(this.splitPuck, this.fasterPuck, this.pierceEnnemy, this.longerLastingPuck);
+                    if (this.biggerPuck)
+                    {
+                        puck1.biggerPuck();
+                        puck2.biggerPuck();
+                    }
                     getWorld().addObject(puck1, getX(), getY());
                     getWorld().addObject(puck2, getX(), getY());
                     puck1.setRotation((int) angleDegrees + Greenfoot.getRandomNumber(15));
                     puck2.setRotation((int) angleDegrees - Greenfoot.getRandomNumber(15));
-                    fire_delay = 50;
+                    fire_delay = this.fasterShooting ? 35: 50;
                 }
                 else
                 {
-                    Actor puck = new Puck();
+                    Puck puck = new Puck(this.splitPuck, this.fasterPuck, this.pierceEnnemy, this.longerLastingPuck);
+                    if (this.biggerPuck)
+                    {
+                        puck.biggerPuck();
+                    }
                     getWorld().addObject(puck, getX(), getY());
                     puck.setRotation((int) angleDegrees);
-                    fire_delay = 50;
+                    fire_delay = this.fasterShooting ? 35 : 50;
                 }   
             }
             else
@@ -159,11 +167,11 @@ public class Player extends Actor
     {
         if ((Greenfoot.mouseClicked(null) || Greenfoot.isKeyDown("space")))
         {
-            movement_speed = this.fasterMovementSpeed ? 1 : 2;
+            movement_speed = this.fasterMovementSpeed ? 2 : 1;
         }
         else
         {
-            movement_speed = this.fasterMovementSpeed ? 3 : 4;
+            movement_speed = this.fasterMovementSpeed ? 4 : 3;
         }
         if (Greenfoot.isKeyDown("w"))
         {
