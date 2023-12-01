@@ -15,7 +15,7 @@ public class Puck extends Actor
             boolean pierceEnnemy, boolean longerLastingPuck
     )
     {
-        this.duration = longerLastingPuck ? 300 : 200;
+        this.duration = longerLastingPuck ? 300 : 10;
         this.acceleration = fasterPuck ? 100 : 75;
         this.splitPuck = splitPuck;
         this.pierceEnnemy = pierceEnnemy;
@@ -44,16 +44,16 @@ public class Puck extends Actor
         if(this.splitPuck)
         {
             PuckShard puckShard1 = new PuckShard();
-            puckShard1.setRotation(45);
+            puckShard1.setRotation(Greenfoot.getRandomNumber(90));
             getWorld().addObject(puckShard1, getX(), getY());
             PuckShard puckShard2 = new PuckShard();
-            puckShard2.setRotation(135);
+            puckShard2.setRotation(Greenfoot.getRandomNumber(90) + 90);
             getWorld().addObject(puckShard2, getX(), getY());
             PuckShard puckShard3 = new PuckShard();
-            puckShard3.setRotation(225);
+            puckShard3.setRotation(Greenfoot.getRandomNumber(90) + 180);
             getWorld().addObject(puckShard3, getX(), getY());
             PuckShard puckShard4 = new PuckShard();
-            puckShard4.setRotation(315);
+            puckShard4.setRotation(Greenfoot.getRandomNumber(90) + 270);
             getWorld().addObject(puckShard4, getX(), getY());
         }
     }
@@ -61,13 +61,6 @@ public class Puck extends Actor
     {
         this.getImage().scale(20, 20);
     }
-    public void pierceEnnemy()
-    {
-        if(this.pierceEnnemy)
-        {
-        
-        }
-
-    }
-    
+    public boolean getPierceEnnemy() {return this.pierceEnnemy;}
+    public void setPierceEnnemy() {this.pierceEnnemy = false;}
 }

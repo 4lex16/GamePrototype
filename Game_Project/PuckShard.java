@@ -13,7 +13,7 @@ public class PuckShard extends Actor
     public PuckShard()
     {
         this.acceleration = 75;
-        this.duration = 100;
+        this.duration = 50;
     }
     public void act()
     {

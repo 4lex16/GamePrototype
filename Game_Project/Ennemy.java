@@ -20,19 +20,28 @@ public class Ennemy extends Actor
 
     public void die()
     {
-        if (isTouching(Puck.class))
+        Puck puck = (Puck) getOneIntersectingObject(Puck.class);
+        PuckShard puckShard = (PuckShard) getOneIntersectingObject(PuckShard.class);
+        if (puck!=null)
         {
+            if(puck.getPierceEnnemy())
+            {
+                puck.setPierceEnnemy();
+            }
+            else if(!puck.getPierceEnnemy())
+            {
+                getWorld().removeObject(puck);
+            }
             health -= 1;
-            getWorld().removeObject(getOneIntersectingObject(Puck.class));
             if (health == 0)
             {
                 getWorld().removeObject(this);
             }
         }
-        if (isTouching(PuckShard.class))
+        if (puckShard!=null)
         {
             health -= 1;
-            getWorld().removeObject(getOneIntersectingObject(PuckShard.class));
+            getWorld().removeObject(puckShard);
             if (health == 0)
             {
                 getWorld().removeObject(this);
