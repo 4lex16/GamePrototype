@@ -5,13 +5,47 @@ public class Gamemenu extends World
     private static int WW = 1600;
     private static int WH = 900;
     public GreenfootSound gfs_MainMenu_World;
-    
+    double timeWelcomeScreenCreation = System.currentTimeMillis();
     public Gamemenu()
     {    
         super(WW, WH, 1); 
+        showText("Please select an option or wait 5 seconds for the game to start", getWidth()/2,700);
+        showText("Press Space Bar or click Play to beginning", getWidth()/2, 800);
         prepare();
         gfs_MainMenu_World = new GreenfootSound("boss_battle_#2_metal_loop.wav");
+        
     }
+    
+     public void act()
+    {
+        Display display = new Display();
+        addObject(display , 280, 500);
+        
+        int timerValue = (int) (System.currentTimeMillis() - timeWelcomeScreenCreation)/1000;
+        
+        display.setImage(new GreenfootImage("Timer Value :" + timerValue , 35, Color.WHITE, Color.BLACK, Color.BLUE));
+        
+
+        if (Greenfoot.isKeyDown("space"))
+        {
+            this.stopped();
+            World world1 = new LevelOne();
+            world1.started();
+            Greenfoot.setWorld(world1);
+            
+
+        }
+
+        if (System.currentTimeMillis() >= (timeWelcomeScreenCreation + (5 * 1000)))
+        {
+            this.stopped();
+            World world1 = new LevelOne();
+            world1.started();
+            Greenfoot.setWorld(world1);
+        }
+
+    }
+    
     
     private void prepare()
     {
@@ -40,6 +74,8 @@ public class Gamemenu extends World
         
         showTextWithBlackFont("Alexandru Cirlan \nMassimo Prioriello", 100, 200);
     }
+    
+    
     
     public void started(){
         gfs_MainMenu_World.playLoop();
