@@ -82,7 +82,6 @@ public class LevelOne extends World
         this.getObjects(Player.class).get(0).getSplitPuck(),
         this.getObjects(Player.class).get(0).getFasterPuck(),
         this.getObjects(Player.class).get(0).getBiggerPuck(),
-        this.getObjects(Player.class).get(0).getPierceEnnemy(),
         this.getObjects(Player.class).get(0).getMultiplePuck(),
         this.getObjects(Player.class).get(0).getLongerLastingPuck(),
         this.getObjects(Player.class).get(0).getFasterShooting()
@@ -148,7 +147,7 @@ public class LevelOne extends World
                     addObject(media,WW, Greenfoot.getRandomNumber(WH));
                 }
             }
-            spawn_duration = Greenfoot.getRandomNumber(100) + 100;
+            spawn_duration = Greenfoot.getRandomNumber(50) + 50;
             spawn_num = this.getObjects(Ennemy.class).size();
         }
         spawn_duration -= 1;

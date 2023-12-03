@@ -1,9 +1,9 @@
 #BlueJ class context
 comment0.target=LevelThree
-comment1.params=playerHealth\ gainHealth\ fasterMovementSpeed\ longerInvincibility\ splitPuck\ fasterPuck\ biggerPuck\ pierceEnnemy\ multiplePuck\ longerLastingPuck\ fasterShooting
-comment1.target=LevelThree(int,\ boolean,\ boolean,\ boolean,\ boolean,\ boolean,\ boolean,\ boolean,\ boolean,\ boolean,\ boolean)
-comment2.params=playerHealth\ gainHealth\ fasterMovementSpeed\ longerInvincibility\ splitPuck\ fasterPuck\ biggerPuck\ pierceEnnemy\ multiplePuck\ longerLastingPuck\ fasterShooting
-comment2.target=void\ prepare(int,\ boolean,\ boolean,\ boolean,\ boolean,\ boolean,\ boolean,\ boolean,\ boolean,\ boolean,\ boolean)
+comment1.params=playerHealth\ gainHealth\ fasterMovementSpeed\ longerInvincibility\ splitPuck\ fasterPuck\ biggerPuck\ multiplePuck\ longerLastingPuck\ fasterShooting
+comment1.target=LevelThree(int,\ boolean,\ boolean,\ boolean,\ boolean,\ boolean,\ boolean,\ boolean,\ boolean,\ boolean)
+comment2.params=playerHealth\ gainHealth\ fasterMovementSpeed\ longerInvincibility\ splitPuck\ fasterPuck\ biggerPuck\ multiplePuck\ longerLastingPuck\ fasterShooting
+comment2.target=void\ prepare(int,\ boolean,\ boolean,\ boolean,\ boolean,\ boolean,\ boolean,\ boolean,\ boolean,\ boolean)
 comment3.params=
 comment3.target=void\ act()
 comment4.params=

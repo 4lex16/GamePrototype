@@ -16,7 +16,6 @@ public class ContendingTeam extends Ennemy
             setStats(3, 6, 300);
             constructed = true;
         }
-        collision();
         goTowardsPlayer();
         eliminatePlayer();
         die();

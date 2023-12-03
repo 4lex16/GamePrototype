@@ -13,13 +13,12 @@ public class Coach extends Ennemy
     {
         if (constructed == false)
         {
-            setStats(2, 5, 300);
+            setStats(2, 5, 200);
             constructed = true;
         }
-        collision();
         goTowardsPlayer();
         eliminatePlayer();
-        shoot();
+        shoot("whistle");
         die();
     }
 }

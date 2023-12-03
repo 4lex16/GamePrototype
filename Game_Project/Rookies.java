@@ -16,7 +16,6 @@ public class Rookies extends Ennemy
             setStats(1, 3, 300);
             constructed = true;
         }
-        collision();
         goTowardsPlayer();
         eliminatePlayer();
         die();

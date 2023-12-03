@@ -20,7 +20,6 @@ public class Player extends Actor
     private boolean fasterShooting;
     private boolean splitPuck;
     private boolean fasterPuck;
-    private boolean pierceEnnemy;
     private boolean longerLastingPuck;
     
     
@@ -30,7 +29,6 @@ public class Player extends Actor
     public boolean getSplitPuck() {return this.splitPuck;}
     public boolean getFasterPuck() {return this.fasterPuck;}
     public boolean getBiggerPuck() {return this.biggerPuck;}
-    public boolean getPierceEnnemy() {return this.pierceEnnemy;}
     public boolean getMultiplePuck() {return this.multiplePuck;}
     public boolean getLongerLastingPuck() {return this.longerLastingPuck;}
     public boolean getFasterShooting() {return this.fasterShooting;}
@@ -41,8 +39,7 @@ public class Player extends Actor
         int health,
         boolean gainHealth, boolean fasterMovementSpeed, boolean longerInvincibility,
         boolean splitPuck, boolean fasterPuck, boolean biggerPuck,
-        boolean pierceEnnemy, boolean multiplePuck, boolean longerLastingPuck,
-        boolean fasterShooting
+        boolean multiplePuck, boolean longerLastingPuck, boolean fasterShooting
     )
     {
         this.health = health;
@@ -52,7 +49,6 @@ public class Player extends Actor
         this.splitPuck = splitPuck;
         this.fasterPuck = fasterPuck;
         this.biggerPuck = biggerPuck;
-        this.pierceEnnemy = pierceEnnemy;
         this.multiplePuck = multiplePuck;
         this.longerLastingPuck = longerLastingPuck;
         this.fasterShooting = fasterShooting;
@@ -63,10 +59,9 @@ public class Player extends Actor
         this.gainHealth = false;
         this.fasterMovementSpeed = false;
         this.longerInvincibility = false;
-        this.splitPuck = true;
+        this.splitPuck = false;
         this.fasterPuck = false;
         this.biggerPuck = false;
-        this.pierceEnnemy = false;
         this.multiplePuck = false;
         this.longerLastingPuck = false;
         this.fasterShooting = false;
@@ -131,8 +126,8 @@ public class Player extends Actor
                 
                 if(this.multiplePuck)
                 {
-                    Puck puck1 = new Puck(this.splitPuck, this.fasterPuck, this.pierceEnnemy, this.longerLastingPuck);
-                    Puck puck2 = new Puck(this.splitPuck, this.fasterPuck, this.pierceEnnemy, this.longerLastingPuck);
+                    Puck puck1 = new Puck(this.splitPuck, this.fasterPuck, this.longerLastingPuck);
+                    Puck puck2 = new Puck(this.splitPuck, this.fasterPuck, this.longerLastingPuck);
                     if (this.biggerPuck)
                     {
                         puck1.biggerPuck();
@@ -146,7 +141,7 @@ public class Player extends Actor
                 }
                 else
                 {
-                    Puck puck = new Puck(this.splitPuck, this.fasterPuck, this.pierceEnnemy, this.longerLastingPuck);
+                    Puck puck = new Puck(this.splitPuck, this.fasterPuck, this.longerLastingPuck);
                     if (this.biggerPuck)
                     {
                         puck.biggerPuck();

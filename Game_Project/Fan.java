@@ -8,18 +8,15 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Fan extends Ennemy
 {
-    private boolean constructed = false;
+    public Fan()
+    {
+        setStats(1, 1, 300);
+    }
     public void act()
     {
-        if (constructed == false)
-        {
-            setStats(1, 1, 300);
-            constructed = true;
-        }
-        collision();
         goTowardsPlayer();
         eliminatePlayer();
-        shoot();
+        shoot("pizza");
         die();
     }
 }

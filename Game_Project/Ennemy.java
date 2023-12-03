@@ -24,15 +24,8 @@ public class Ennemy extends Actor
         PuckShard puckShard = (PuckShard) getOneIntersectingObject(PuckShard.class);
         if (puck!=null)
         {
-            if(puck.getPierceEnnemy())
-            {
-                puck.setPierceEnnemy();
-            }
-            else if(!puck.getPierceEnnemy())
-            {
-                getWorld().removeObject(puck);
-            }
             health -= 1;
+            getWorld().removeObject(puck);
             if (health == 0)
             {
                 getWorld().removeObject(this);
@@ -59,7 +52,7 @@ public class Ennemy extends Actor
         }
     }
     
-    public void shoot()
+    public void shoot(String type)
     {
         if (fire_timer <= 0)
         {
@@ -69,9 +62,8 @@ public class Ennemy extends Actor
             double angleRadians = Math.atan2(opposite, adjacent);
             double angleDegrees = Math.toDegrees(angleRadians);
             
-            Actor pizza = new pizza();
-            getWorld().addObject(pizza, this.getX(), this.getY());
-            pizza.setRotation((int)angleDegrees);
+            Actor projectile = new Projectiles(type, (int) angleDegrees);
+            getWorld().addObject(projectile, this.getX(), this.getY());
             fire_timer = this.set_fire_delay;
         }
         else
@@ -95,13 +87,5 @@ public class Ennemy extends Actor
                 getWorld().getObjects(Player.class).get(0).loseHealth();
             }
         } 
-    }
-    
-    public void collision()
-    {
-        if (isTouching(Ennemy.class))
-        {
-            move(0);
-        }
     }
 }

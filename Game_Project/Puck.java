@@ -7,18 +7,15 @@ public class Puck extends Actor
     private int acceleration;
     private int rotation = getRotation();
     private boolean splitPuck;
-    private boolean pierceEnnemy;
     private boolean biggerPuck;
     
     public Puck(
-            boolean splitPuck, boolean fasterPuck,
-            boolean pierceEnnemy, boolean longerLastingPuck
+            boolean splitPuck, boolean fasterPuck, boolean longerLastingPuck
     )
     {
-        this.duration = longerLastingPuck ? 300 : 10;
+        this.duration = longerLastingPuck ? 300 : 200;
         this.acceleration = fasterPuck ? 100 : 75;
         this.splitPuck = splitPuck;
-        this.pierceEnnemy = pierceEnnemy;
         this.biggerPuck = biggerPuck;
     }
     public void act()
@@ -61,6 +58,4 @@ public class Puck extends Actor
     {
         this.getImage().scale(20, 20);
     }
-    public boolean getPierceEnnemy() {return this.pierceEnnemy;}
-    public void setPierceEnnemy() {this.pierceEnnemy = false;}
 }
