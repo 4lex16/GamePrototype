@@ -130,48 +130,48 @@ public class LevelTwo extends World
             int randomNum = Greenfoot.getRandomNumber(4);
             if (randomNum == 0)
             {
-                randomNum = Greenfoot.getRandomNumber(2);
+                randomNum = Greenfoot.getRandomNumber(5);
                 if (randomNum == 0)
                 {
                     addObject(coach,Greenfoot.getRandomNumber(WW), 0);
                 }
-                if (randomNum == 1)
+                if (randomNum >= 1)
                 {
                     addObject(rookies,Greenfoot.getRandomNumber(WW), 0);
                 }
             }
             if (randomNum == 1)
             {
-                randomNum = Greenfoot.getRandomNumber(2);
+                randomNum = Greenfoot.getRandomNumber(5);
                 if (randomNum == 0)
                 {
                     addObject(coach,0, Greenfoot.getRandomNumber(WH));
                 }
-                if (randomNum == 1)
+                if (randomNum >= 1)
                 {
                     addObject(rookies,0, Greenfoot.getRandomNumber(WH));
                 }
             }
             if (randomNum == 2)
             {
-                randomNum = Greenfoot.getRandomNumber(2);
+                randomNum = Greenfoot.getRandomNumber(5);
                 if (randomNum == 0)
                 {
                     addObject(coach,Greenfoot.getRandomNumber(WW), WH);
                 }
-                if (randomNum == 1)
+                if (randomNum >= 1)
                 {
                     addObject(rookies,Greenfoot.getRandomNumber(WW), WH);
                 }
             }
             if (randomNum == 3)
             {
-                randomNum = Greenfoot.getRandomNumber(2);
+                randomNum = Greenfoot.getRandomNumber(5);
                 if (randomNum == 0)
                 {
                     addObject(coach,WW, Greenfoot.getRandomNumber(WH));
                 }
-                if (randomNum == 1)
+                if (randomNum >= 1)
                 {
                     addObject(rookies,WW, Greenfoot.getRandomNumber(WH));
                 }

@@ -11,7 +11,7 @@ public class LevelOne extends World
     // Timer
     SimpleTimer tim = new SimpleTimer();
     Counter timeCount =new Counter();
-    private int timer = 60;
+    private int timer = 1;
     
     public LevelOne()
     {

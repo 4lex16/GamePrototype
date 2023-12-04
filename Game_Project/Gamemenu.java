@@ -36,7 +36,7 @@ public class Gamemenu extends World
 
         }
 
-        if (System.currentTimeMillis() >= (timeWelcomeScreenCreation + (5 * 1000)))
+        if (System.currentTimeMillis() >= (timeWelcomeScreenCreation + (10 * 1000)))
         {
             this.stopped();
             World world1 = new LevelOne();
