@@ -6,6 +6,8 @@ public class LevelThree extends World
     private static int WH = 900;
     private int spawn_duration = 100;
     private int spawn_cap = 10;
+    
+    private boolean bossSpawn = false;
     // Sound
     public GreenfootSound gfs_levelThree_world;
     // Timer
@@ -47,14 +49,25 @@ public class LevelThree extends World
         exitGame.setLocation(1481,863);
     }
     public void act()
-    {  
+    {
+        this.setPaintOrder(Goalie.class, GoalieMinions.class);
         if(tim.millisElapsed() > 1000)
         {
-            timeCount.add(-1);
-            tim.mark();
-            timer--;
-            showText("Time left: "+ timer, 830,50);
-            if(timer <= 0)
+            if(timer >= 0)
+            {
+                timeCount.add(-1);
+                tim.mark();
+                timer--;
+                showText("Time left: "+ timer, 830,50);
+            }
+            if (!this.bossSpawn && timer <= 30)
+            {
+                int e = getObjects(Ennemy.class).size();
+                for(int i = 0; i < e;i++) {this.removeObject(this.getObjects(Ennemy.class).get(0));}
+                this.addObject(new Goalie(), 800, 200);
+                this.bossSpawn = true;
+            }
+            if(bossSpawn && this.getObjects(Goalie.class).size() == 0)
             {
                 transitionToYouWonWorld();
             }
@@ -63,7 +76,8 @@ public class LevelThree extends World
         {
             transitionToYouLostWorld();
         }
-        spawn();
+        if(!this.bossSpawn)
+        {spawn();}
     }
     public boolean isGameLost()
     {
@@ -102,58 +116,25 @@ public class LevelThree extends World
         int spawn_num = this.getObjects(Ennemy.class).size();
         while (spawn_num < spawn_cap && spawn_duration <= 0)
         {
-            Fan fan = new Fan();
             ContendingTeam contendingTeam = new ContendingTeam();
             int randomNum = Greenfoot.getRandomNumber(4);
             if (randomNum == 0)
             {
-                randomNum = Greenfoot.getRandomNumber(2);
-                if (randomNum == 0)
-                {
-                    addObject(fan,Greenfoot.getRandomNumber(WW), 0);
-                }
-                if (randomNum == 1)
-                {
-                    addObject(contendingTeam,Greenfoot.getRandomNumber(WW), 0);
-                }
+                addObject(contendingTeam,Greenfoot.getRandomNumber(WW), 0);
             }
             if (randomNum == 1)
             {
-                randomNum = Greenfoot.getRandomNumber(2);
-                if (randomNum == 0)
-                {
-                    addObject(fan,0, Greenfoot.getRandomNumber(WH));
-                }
-                if (randomNum == 1)
-                {
-                    addObject(contendingTeam,0, Greenfoot.getRandomNumber(WH));
-                }
+                addObject(contendingTeam,0, Greenfoot.getRandomNumber(WH));
             }
             if (randomNum == 2)
             {
-                randomNum = Greenfoot.getRandomNumber(2);
-                if (randomNum == 0)
-                {
-                    addObject(fan,Greenfoot.getRandomNumber(WW), WH);
-                }
-                if (randomNum == 1)
-                {
-                    addObject(contendingTeam,Greenfoot.getRandomNumber(WW), WH);
-                }
+                addObject(contendingTeam,Greenfoot.getRandomNumber(WW), WH);
             }
             if (randomNum == 3)
             {
-                randomNum = Greenfoot.getRandomNumber(2);
-                if (randomNum == 0)
-                {
-                    addObject(fan,WW, Greenfoot.getRandomNumber(WH));
-                }
-                if (randomNum == 1)
-                {
-                    addObject(contendingTeam,WW, Greenfoot.getRandomNumber(WH));
-                }
+                addObject(contendingTeam,WW, Greenfoot.getRandomNumber(WH));
             }
-            spawn_duration = 200;
+            spawn_duration = Greenfoot.getRandomNumber(50) + 150;
             spawn_num = this.getObjects(Ennemy.class).size();
         }
         spawn_duration -= 1;

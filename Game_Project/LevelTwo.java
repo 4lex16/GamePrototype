@@ -176,7 +176,7 @@ public class LevelTwo extends World
                     addObject(rookies,WW, Greenfoot.getRandomNumber(WH));
                 }
             }
-            spawn_duration = 200;
+            spawn_duration = Greenfoot.getRandomNumber(50) + 125;
             spawn_num = this.getObjects(Ennemy.class).size();
         }
         spawn_duration -= 1;

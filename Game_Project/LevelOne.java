@@ -147,7 +147,7 @@ public class LevelOne extends World
                     addObject(media,WW, Greenfoot.getRandomNumber(WH));
                 }
             }
-            spawn_duration = Greenfoot.getRandomNumber(50) + 50;
+            spawn_duration = Greenfoot.getRandomNumber(50) + 100;
             spawn_num = this.getObjects(Ennemy.class).size();
         }
         spawn_duration -= 1;
