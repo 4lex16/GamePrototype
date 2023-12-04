@@ -56,15 +56,15 @@ public class Player extends Actor
     public Player()
     {
         this.health = maxHealth;
-        this.gainHealth = false;
-        this.fasterMovementSpeed = false;
-        this.longerInvincibility = false;
-        this.splitPuck = false;
-        this.fasterPuck = false;
-        this.biggerPuck = false;
-        this.multiplePuck = false;
-        this.longerLastingPuck = false;
-        this.fasterShooting = false;
+        this.gainHealth = true;
+        this.fasterMovementSpeed = true;
+        this.longerInvincibility = true;
+        this.splitPuck = true;
+        this.fasterPuck = true;
+        this.biggerPuck = true;
+        this.multiplePuck = true;
+        this.longerLastingPuck = true;
+        this.fasterShooting = true;
     }
     public void act()
     {
@@ -166,7 +166,7 @@ public class Player extends Actor
         }
         else
         {
-            movement_speed = this.fasterMovementSpeed ? 4 : 3;
+            movement_speed = this.fasterMovementSpeed ? 5 : 4;
         }
         if (Greenfoot.isKeyDown("w"))
         {

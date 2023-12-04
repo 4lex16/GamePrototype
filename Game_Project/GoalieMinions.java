@@ -13,17 +13,17 @@ public class GoalieMinions extends Actor
     public GoalieMinions(String attackPattern)
     {
         this.attackPattern = attackPattern;
-        if(this.attackPattern.equals("Attack1")) {this.duration = 400;}
-        else if(this.attackPattern.equals("Attack2")) {this.duration = 400;}
-        else if(this.attackPattern.equals("Attack3")) {this.duration = 250;}
-        else if(this.attackPattern.equals("Attack4")) {this.duration = 250;}
+        if(this.attackPattern.equals("Attack1")) {this.duration = 250;}
+        else if(this.attackPattern.equals("Attack2")) {this.duration = 250;}
+        else if(this.attackPattern.equals("Attack3")) {this.duration = 200;}
+        else if(this.attackPattern.equals("Attack4")) {this.duration = 200;}
     }
     public void act()
     {
-        if(this.attackPattern.equals("Attack1")) {move(3);}
-        else if(this.attackPattern.equals("Attack2")) {move(-3);}
-        else if(this.attackPattern.equals("Attack3")) {move(3);this.setRotation(90);}
-        else if(this.attackPattern.equals("Attack4")) {move(-3);this.setRotation(90);}
+        if(this.attackPattern.equals("Attack1")) {move(5);}
+        else if(this.attackPattern.equals("Attack2")) {move(-5);}
+        else if(this.attackPattern.equals("Attack3")) {move(4);this.setRotation(90);}
+        else if(this.attackPattern.equals("Attack4")) {move(-4);this.setRotation(90);}
         eliminatePlayer();
         delete();
     }

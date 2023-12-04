@@ -5,7 +5,7 @@ public class LevelOne extends World
     private static int WW = 1600;
     private static int WH = 900;
     private int spawn_duration = 100;
-    private int spawn_cap = 10;
+    private int spawn_cap = 30;
     // Sound
     public GreenfootSound gfs_levelOne_world;
     // Timer

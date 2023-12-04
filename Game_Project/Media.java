@@ -13,7 +13,7 @@ public class Media extends Ennemy
     {
         if (constructed == false)
         {
-            setStats(1, 2, 0);
+            setStats(2, 2, 0);
             constructed = true;
         }
         goTowardsPlayer();

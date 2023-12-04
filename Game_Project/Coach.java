@@ -13,7 +13,7 @@ public class Coach extends Ennemy
     {
         if (constructed == false)
         {
-            setStats(2, 5, 200);
+            setStats(2, 4, 200);
             constructed = true;
         }
         goTowardsPlayer();

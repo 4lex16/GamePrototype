@@ -5,13 +5,13 @@ public class LevelTwo extends World
     private static int WW = 1600;
     private static int WH = 900;
     private int spawn_duration = 100;
-    private int spawn_cap = 10;
+    private int spawn_cap = 30;
     // Sound
     public GreenfootSound gfs_levelTwo_world;
     // Timer
     SimpleTimer tim = new SimpleTimer();
     Counter timeCount =new Counter();
-    private int timer = 60;
+    private int timer = 1;
     
     public LevelTwo(
         int playerHealth,

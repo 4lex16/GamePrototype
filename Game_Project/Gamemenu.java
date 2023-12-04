@@ -9,7 +9,7 @@ public class Gamemenu extends World
     public Gamemenu()
     {    
         super(WW, WH, 1); 
-        showText("Please select an option or wait 5 seconds for the game to start", getWidth()/2,700);
+        showText("Please select an option or wait 10 seconds for the game to start", getWidth()/2,700);
         showText("Press Space Bar or click Play to beginning", getWidth()/2, 800);
         prepare();
         gfs_MainMenu_World = new GreenfootSound("boss_battle_#2_metal_loop.wav");
