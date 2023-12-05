@@ -11,7 +11,7 @@ public class LevelTwo extends World
     // Timer
     SimpleTimer tim = new SimpleTimer();
     Counter timeCount =new Counter();
-    private int timer = 1;
+    private int timer = 60;
     
     public LevelTwo(
         int playerHealth,
