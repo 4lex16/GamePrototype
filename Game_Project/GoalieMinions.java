@@ -10,13 +10,15 @@ public class GoalieMinions extends Actor
 {
     private int duration = 300;
     private String attackPattern;
+    private boolean e = false;
     public GoalieMinions(String attackPattern)
     {
         this.attackPattern = attackPattern;
-        if(this.attackPattern.equals("Attack1")) {this.duration = 250;}
-        else if(this.attackPattern.equals("Attack2")) {this.duration = 250;}
+        if(this.attackPattern.equals("Attack1")) {this.duration = 200;}
+        else if(this.attackPattern.equals("Attack2")) {this.duration = 200;}
         else if(this.attackPattern.equals("Attack3")) {this.duration = 200;}
         else if(this.attackPattern.equals("Attack4")) {this.duration = 200;}
+        else if(this.attackPattern.equals("Attack5")) {this.duration = 150;}
     }
     public void act()
     {
@@ -24,6 +26,17 @@ public class GoalieMinions extends Actor
         else if(this.attackPattern.equals("Attack2")) {move(-5);}
         else if(this.attackPattern.equals("Attack3")) {move(4);this.setRotation(90);}
         else if(this.attackPattern.equals("Attack4")) {move(-4);this.setRotation(90);}
+        else if(this.attackPattern.equals("Attack5")) 
+        {
+            if(this.duration <= 100)
+            {move(10);}
+            if(!this.e)
+            {
+                this.turnTowards(getWorld().getObjects(Player.class).get(0).getX(), getWorld().getObjects(Player.class).get(0).getY());
+                this.e = true;
+            }
+        }
+            
         eliminatePlayer();
         delete();
     }

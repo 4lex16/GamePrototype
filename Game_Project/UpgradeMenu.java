@@ -117,6 +117,27 @@ public class UpgradeMenu extends World
         for(int i = 0; i<3; i++)
         {
             Upgrades upgrades = (Upgrades) new Upgrades();
+            if (Upgrades_List.size() > 0) 
+            {
+                boolean unique = false;
+                while(!unique)
+                {
+                    for(Upgrades upgrade1 : Upgrades_List) 
+                    {
+                        if(upgrade1.getNum() == upgrades.getNum()) 
+                        {
+                            upgrades.redo();
+                        }
+                    }
+                    for(Upgrades upgrade1 : Upgrades_List) 
+                    {
+                        if(upgrade1.getNum() != upgrades.getNum()) 
+                        {
+                            unique = true;
+                        }
+                    }
+                }
+            }
             Upgrades_List.add(upgrades);
             this.addObject(Upgrades_List.get(i), (WW*(i+1))/4, WH/2);
         }

@@ -13,7 +13,7 @@ public class LevelThree extends World
     // Timer
     SimpleTimer tim = new SimpleTimer();
     Counter timeCount =new Counter();
-    private int timer = 30;
+    private int timer = 60;
     
     public LevelThree(
         int playerHealth, 
@@ -53,7 +53,7 @@ public class LevelThree extends World
         this.setPaintOrder(Goalie.class, GoalieMinions.class);
         if(tim.millisElapsed() > 1000)
         {
-            if(timer >= 0)
+            if(timer > 0)
             {
                 timeCount.add(-1);
                 tim.mark();

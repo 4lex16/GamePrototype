@@ -15,4 +15,11 @@ public class Upgrades extends Button
         checkMouse();
     }
     public int getNum(){return this.upgradeNum;}
+    public void redo() 
+    {
+        this.upgradeNum = Greenfoot.getRandomNumber(8)+1;
+        String upgrade = String.format("Upgrade%d.png", this.upgradeNum);
+        GreenfootImage square = new GreenfootImage(upgrade);
+        setImage(square);
+    }
 }

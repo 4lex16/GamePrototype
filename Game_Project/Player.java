@@ -9,6 +9,7 @@ public class Player extends Actor
     private int health;
     private int invincibilityFrames = 0;
     private int invincibilityFramesDuration = 50;
+    private boolean invincible = false;
     private static ArrayList<Heart> hearts = new ArrayList<Heart>();
     
     // Booleans for Upgrades
@@ -56,15 +57,15 @@ public class Player extends Actor
     public Player()
     {
         this.health = maxHealth;
-        this.gainHealth = true;
-        this.fasterMovementSpeed = true;
-        this.longerInvincibility = true;
-        this.splitPuck = true;
-        this.fasterPuck = true;
-        this.biggerPuck = true;
-        this.multiplePuck = true;
-        this.longerLastingPuck = true;
-        this.fasterShooting = true;
+        this.gainHealth = false;
+        this.fasterMovementSpeed = false;
+        this.longerInvincibility = false;
+        this.splitPuck = false;
+        this.fasterPuck = false;
+        this.biggerPuck = false;
+        this.multiplePuck = false;
+        this.longerLastingPuck = false;
+        this.fasterShooting = false;
     }
     public void act()
     {
@@ -87,10 +88,12 @@ public class Player extends Actor
     {
         if (invincibilityFramesDuration < 0) 
         {
+            this.invincible = false;
             this.setImage(playerDirection);
         }
         else
         {
+            this.invincible = true;
             invincibilityFramesDuration -=1;
         } 
     }
@@ -162,11 +165,11 @@ public class Player extends Actor
     {
         if ((Greenfoot.mouseClicked(null) || Greenfoot.isKeyDown("space")))
         {
-            movement_speed = this.fasterMovementSpeed ? 2 : 1;
+            movement_speed = movementSpeed(1);
         }
         else
         {
-            movement_speed = this.fasterMovementSpeed ? 5 : 4;
+            movement_speed = movementSpeed(2);
         }
         if (Greenfoot.isKeyDown("w"))
         {
@@ -186,7 +189,21 @@ public class Player extends Actor
             setLocation(getX() + movement_speed, getY());
             playerDirection = "characterR.png";
         }
-    } 
+    }
+    public int movementSpeed(int type)
+    {
+        if (type == 1) 
+        {
+            if (this.fasterMovementSpeed) {return 2;} 
+            else {return 1;}
+        }
+        if (type == 2) 
+        {
+            if (this.fasterMovementSpeed) {return 5;}
+            if (this.invincible) {return 6;}
+        }
+        return 4;
+    }
     public void updateHeart(int numHearts)
     {
         getWorld().removeObjects(hearts);
